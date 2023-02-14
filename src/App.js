@@ -1,22 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter,BrowserRouter ,Routes, Route } from 'react-router-dom';
+import Bookings from './Components/Bookings';
+import Rooms from './Components/Rooms';
+import Users from './Components/Users';
+import Contact from './Components/Contact';
+import LoginUser from './Components/LoginUser'
+
 
 function App() {
   return (
     <>
-   <HashRouter>
-    <div className="App">
-   <Routes>
-    <Route>
-      
-    </Route>
-   </Routes> 
-     
-    </div>
-
-   </HashRouter> 
-
+      <BrowserRouter>
+        <div className="App">
+          <Routes>
+            <Route exact path ="/" element={<LoginUser/>}/>
+            <Route path="/user" element={<Users/>} />
+            <Route path="/bookings" element={<Bookings/>} />
+            <Route path="/rooms:/id" element={<Rooms/>} />
+            <Route path="/contact" element={<Contact/>} />
+          </Routes> 
+        </div>
+      </BrowserRouter> 
     </>
   );
 }
