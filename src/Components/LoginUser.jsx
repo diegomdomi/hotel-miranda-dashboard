@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Button from "./Button";
 import Input from "./Input";
 
+
 function LoginUser() {
 
   return (
@@ -14,10 +15,7 @@ function LoginUser() {
       <ButtonContainer>
         <Button content="Sign Up" />
       </ButtonContainer>
-     
       <HorizontalRule />
-
-      <ForgotPassword>Forgot Password ?</ForgotPassword>
     </MainContainer>
   );
 }

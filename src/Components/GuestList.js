@@ -1,4 +1,4 @@
-const gestList = [{
+export const guestList = [{
     
     "id": 1,
     "first_name": "Melessa",
