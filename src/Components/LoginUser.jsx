@@ -1,28 +1,61 @@
+import React , {useContext, useState} from 'react';
+import Context from '../Context/index';
 import styled from "styled-components";
 import Button from "./Button";
 import Input from "./Input";
+import {  useNavigate } from 'react-router-dom'
+
 
 
 function LoginUser() {
+  const context = useContext(Context)
+  const navigate = useNavigate()
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+
+  const handleInputChange = (e) =>{
+    if(e.target.name === "email"){
+      const email = e.target.value
+      setEmail(email.trim().toLowerCase())
+  }
+  if(e.target.name === "password"){
+    const pass = e.target.value
+    setPassword(pass.trim())
+}
+}
+
+  const handleClick = () => {
+    context.addUsers({email:email, password:password})
+    localStorage.setItem('users', JSON.stringify({email,password}))
+    if(email !== '' && password !== ''){
+       navigate( "/dashboard" )
+    }else{
+      alert("you must login")
+    }
+  }
 
   return (
+    <form >
     <MainContainer>
       <WelcomeText>Welcome</WelcomeText>
       <InputContainer>
-        <Input type="text" placeholder="Email" />
-        <Input type="password" placeholder="Password" />
+        <Input type="text" placeholder="Email" name="email" handleInputChange={handleInputChange}/>
+        <Input type="password" placeholder="Password" name="password" handleInputChange={handleInputChange}/>
       </InputContainer>
       <ButtonContainer>
-        <Button content="Sign Up" />
+        <Button content="Sign Up" handleClick={handleClick} />
       </ButtonContainer>
-      <HorizontalRule />
     </MainContainer>
+    </form>
   );
 }
 
 const MainContainer = styled.div`
   display: flex;
   margin: 0 auto;
+  margin-top:60px;
   align-items: center;
   flex-direction: column;
   height: 80vh;
@@ -72,7 +105,7 @@ const MainContainer = styled.div`
 
 const WelcomeText = styled.h2`
   margin: 3rem 0 2rem 0;
-  color:red;
+  color:blue;
 `;
 
 const InputContainer = styled.div`
@@ -92,23 +125,5 @@ const ButtonContainer = styled.div`
   justify-content: center;
 `;
 
-
-
-const HorizontalRule = styled.hr`
-  width: 90%;
-  height: 0.3rem;
-  border-radius: 0.8rem;
-  border: none;
-  background: linear-gradient(to right, #14163c 0%, #03217b 79%);
-  background-color: #ebd0d0;
-  margin: 1.5rem 0 1rem 0;
-  backdrop-filter: blur(25px);
-`;
-
-
-
-const ForgotPassword = styled.h4`
-  cursor: pointer;
-`;
 
 export default LoginUser;
