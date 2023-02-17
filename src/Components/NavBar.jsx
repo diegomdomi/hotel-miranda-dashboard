@@ -33,7 +33,6 @@ const TitleNav = styled.p`
 
 const NavBar = ({openNav}) => {
 
-  // const [sideBar, setSideBar] = useState('0%')
   const auth = useAuth()
   const location = useLocation();
   const nameRoute = location.pathname
@@ -59,10 +58,7 @@ const NavBar = ({openNav}) => {
     navigate('/')
   }
 
-  // const [sideBar, setSideBar] = useState(false)
-  //   const openNav = ()=> {
-  //     setSideBar(!sideBar)
-  //   }
+
 
   return (
     <>

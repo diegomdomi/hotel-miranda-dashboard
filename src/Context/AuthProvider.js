@@ -7,8 +7,7 @@ export const useAuth = () =>{
 }
 
 export const AuthProvider = ({ children }) => {
-    // const [auth, setAuth] = useState(false);
-    const [auth, setAuth] = useState(JSON.parse(localStorage.getItem('userLogin')) || {email:'', password:'',isLogged:false});
+    const [auth, setAuth] = useState(false);
 
     const loginAuth = ({email,password}) => {
         if(email === 'usuario1@1.com' && password === '111'){
