@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Dashboard from './Dashboard';
 
 const Contact = () => {
   return (
-    <div>Contact</div>
+    <>
+      <Dashboard></Dashboard>
+      <div>Contact</div>
+    </>
   )
 }
 

@@ -1,43 +1,43 @@
-import React , {useContext, useState} from 'react';
-import Context from '../Context/index';
+import React , { useState} from 'react';
 import styled from "styled-components";
 import Button from "./Button";
 import Input from "./Input";
 import {  useNavigate } from 'react-router-dom'
+import { useAuth } from '../Context/AuthProvider';
+
 
 
 
 function LoginUser() {
-  const context = useContext(Context)
-  const navigate = useNavigate()
 
+  const navigate = useNavigate()
+  const auth = useAuth()
+  console.log(auth);
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-
 
   const handleInputChange = (e) =>{
     if(e.target.name === "email"){
       const email = e.target.value
       setEmail(email.trim().toLowerCase())
+    }
+    if(e.target.name === "password"){
+      const pass = e.target.value
+      setPassword(pass.trim())
   }
-  if(e.target.name === "password"){
-    const pass = e.target.value
-    setPassword(pass.trim())
-}
 }
 
-  const handleClick = () => {
-    context.addUsers({email:email, password:password})
-    localStorage.setItem('users', JSON.stringify({email,password}))
-    if(email !== '' && password !== ''){
-       navigate( "/dashboard" )
-    }else{
-      alert("you must login")
+  const handleSubmit = (e) =>{
+    e.preventDefault()
+    auth.loginAuth({email,password})
+    navigate('/dashboard')
+
     }
-  }
+
+
 
   return (
-    <form >
+    <form onSubmit={handleSubmit}>
     <MainContainer>
       <WelcomeText>Welcome</WelcomeText>
       <InputContainer>
@@ -45,7 +45,7 @@ function LoginUser() {
         <Input type="password" placeholder="Password" name="password" handleInputChange={handleInputChange}/>
       </InputContainer>
       <ButtonContainer>
-        <Button content="Sign Up" handleClick={handleClick} />
+        <Button content="Sign Up"  />
       </ButtonContainer>
     </MainContainer>
     </form>

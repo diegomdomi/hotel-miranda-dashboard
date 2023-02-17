@@ -1,5 +1,5 @@
 export const LOGEDIN_STORE = "LOGEDIN_STORE";
-export const LOGOUT = "logout";
+export const LOGOUT = "LOGOUT";
 
 export const myReducer = (state,action)=>{
      switch (action.type) {
@@ -11,7 +11,7 @@ export const myReducer = (state,action)=>{
                  isLogged:true
              }
              case LOGOUT:
-             return { ...state, ...action.payload }
+                return { ...state, ...action.payload }
              default:
              return {...state};
      }
