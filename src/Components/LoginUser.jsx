@@ -12,26 +12,14 @@ function LoginUser() {
 
   const navigate = useNavigate()
   const auth = useAuth()
-  console.log(auth);
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("usuario1@1.com")
+  const [password, setPassword] = useState("111")
 
-  const handleInputChange = (e) =>{
-    if(e.target.name === "email"){
-      const email = e.target.value
-      setEmail(email.trim().toLowerCase())
-    }
-    if(e.target.name === "password"){
-      const pass = e.target.value
-      setPassword(pass.trim())
-  }
-}
 
   const handleSubmit = (e) =>{
     e.preventDefault()
     auth.loginAuth({email,password})
     navigate('/dashboard')
-
     }
 
 
@@ -41,12 +29,16 @@ function LoginUser() {
     <MainContainer>
       <WelcomeText>Welcome</WelcomeText>
       <InputContainer>
-        <Input type="text" placeholder="Email" name="email" handleInputChange={handleInputChange}/>
-        <Input type="password" placeholder="Password" name="password" handleInputChange={handleInputChange}/>
+        <Input type="text" placeholder="Email" name="email"  handleInputChange={(e)=>setEmail(e.target.value)}/>
+        <Input type="password" placeholder="Password" name="password"  handleInputChange={(e)=>setPassword(e.target.value)}/>
       </InputContainer>
       <ButtonContainer>
         <Button content="Sign Up"  />
       </ButtonContainer>
+      <MainTitleContainer>
+          <TitleContainer>H</TitleContainer>
+          <MainTitle>Hotel Miranda</MainTitle>
+        </MainTitleContainer>
     </MainContainer>
     </form>
   );
@@ -124,6 +116,33 @@ const ButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
+const MainTitle = styled.h1`
+    width:20%;
+    color: var(--unnamed-color-262626);
+    font: normal normal 600 28px/42px Poppins;
+    letter-spacing: 0px;
+    color: #262626;
+    opacity: 1;
+    font-family: 'Poppins', sans-serif;
+`
+const TitleContainer = styled.div`
+    color:black;
+    font-weight: 800;
+    font-size:25px;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+    box-shadow: rgb(139 139 139 / 25%) 0px 14px 24px 0px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+`
+const MainTitleContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 15px;
+`
 
 export default LoginUser;

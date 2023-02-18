@@ -7,12 +7,14 @@ export const useAuth = () =>{
 }
 
 export const AuthProvider = ({ children }) => {
-    const [auth, setAuth] = useState(false);
+    // const [auth, setAuth] = useState(false);
+    const [auth, setAuth] = useState(JSON.parse(localStorage.getItem('userLogin')) || {email:'', isLogged:false});
 
     const loginAuth = ({email,password}) => {
         if(email === 'usuario1@1.com' && password === '111'){
-            localStorage.setItem("userLogin", JSON.stringify({email: "usuario1@1.com", password: "111", isLogged: true}));
+            localStorage.setItem("userLogin", JSON.stringify({email: "usuario1@1.com", isLogged: true}));
             setAuth({email, password, isLogged: true});
+            // setAuth(true);
         }else{
             alert('user or password incorrect');
         }
@@ -21,10 +23,11 @@ export const AuthProvider = ({ children }) => {
     const logoutAuth = () => {
         localStorage.removeItem("userLogin");
         setAuth({...auth, isLogged: false});
+        // setAuth(false);
     }
-    useEffect(()=>{
-        localStorage.setItem('userLogin', JSON.stringify(auth));
-    }, [auth]);
+    // useEffect(()=>{
+    //     localStorage.setItem('userLogin', JSON.stringify(auth));
+    // }, [auth]);
 
     const utils = {
         auth,

@@ -1,10 +1,8 @@
 import React from 'react';
-import Dashboard from './Dashboard';
-
+import NavBar from './NavBar';
 const Contact = () => {
   return (
     <>
-      <Dashboard></Dashboard>
       <div>Contact</div>
     </>
   )

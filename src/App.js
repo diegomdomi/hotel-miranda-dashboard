@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter ,Routes, Route,Navigate } from 'react-router-dom';
+import { BrowserRouter ,Routes, Route} from 'react-router-dom';
 import Bookings from './Components/Bookings';
 import Rooms from './Components/Rooms';
 import Room from './Components/Room';
@@ -8,7 +8,12 @@ import Contact from './Components/Contact';
 import LoginUser from './Components/LoginUser'
 import Dashboard from './Components/Dashboard';
 import PrivateRoutes from './utils/PrivateRoutes';
-import { AuthProvider } from './Context/AuthProvider';
+import { AuthProvider, useAuth } from './Context/AuthProvider';
+import NavBar from './Components/NavBar';
+import SideBar from './Components/SideBar';
+import MainNavContainer from './Components/MainNavContainer';
+import MainDisplayContainer from './Components/MainDisplayContainer';
+import styled from 'styled-components';
 
 function App() {
 
@@ -16,10 +21,15 @@ function App() {
     <>
     <AuthProvider>
       <BrowserRouter>
-        <div className="App">
+        <div className="App" >
+        {/* <MainDisplayContainer >
+        </MainDisplayContainer> */}
+
+            <MainNavContainer  >
+            </MainNavContainer>
           <Routes>
-            <Route element={<PrivateRoutes/>} >
-              <Route path="/dashboard" element={<Dashboard/>} />
+            <Route element={<PrivateRoutes /> } >
+              <Route path="/dashboard" element={<Dashboard/>}/>
               <Route path="/user" element={<Users/>} />
               <Route path="/bookings" element={<Bookings/>} />
               <Route path="/rooms" element={<Rooms/>} />
@@ -27,8 +37,9 @@ function App() {
               <Route path="/users" element={<Users/>} />
               <Route path="/contact" element={<Contact/>} />
             </Route>
-            <Route exact path ="/" element={<LoginUser/>}/>
+            <Route  path ="/login" element={<LoginUser/>}/>
           </Routes> 
+
         </div>
       </BrowserRouter> 
       </AuthProvider>

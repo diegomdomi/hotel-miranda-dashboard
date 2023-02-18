@@ -5,7 +5,7 @@ const PrivateRoutes = () => {
 
     let auth = useAuth()
     return(
-        auth.auth.isLogged ? <Outlet/> : <Navigate to="/"/>
+        auth.auth.isLogged ? <Outlet/> : <Navigate to="/login"/>
     )
 }
 

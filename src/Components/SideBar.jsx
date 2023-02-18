@@ -11,19 +11,16 @@ import { Link } from 'react-router-dom'
  
 
 const LateralMenu = styled.div`
+    height: 100%;
     width: ${(props) => props.display};
-    min-width: ${(props) => props.display};
-    max-height: ${(props) => props.Height};
-    right:${(props) => props.right};
-    ${'' /* width: 345px; */}
-    ${'' /* height: 1812px; */}
-    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    position: fixed;
+    ${'' /* z-index: 1; */}
+    top: 0;
+    left: 0;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 13px 3px 40px #00000005;
-    transition: width 0.3s ease 0s;
-    overflow: visible;
-    position: relative;
-    opacity: 1;
+    overflow-x: hidden;
+    transition: 0.5s;
 `;
 
 const ListItems = styled.li`
@@ -41,8 +38,7 @@ const ListItems = styled.li`
     color: #799283;
     opacity: 1;
     list-style: none;
-
-
+ 
 ` 
 
 const ElementsDiv = styled.div`
@@ -51,7 +47,14 @@ const ElementsDiv = styled.div`
     justify-content: space-around;
     :first-child {
     color: rgb(121, 146, 131);
-}
+    }
+    :hover{
+    margin-right: 15px;
+    border-left: 8px solid red;
+    border-radius: 0px 8px 8px 0px;
+
+    }
+
 `
 
 const DragDiv = styled.div`
@@ -76,9 +79,10 @@ const MainTitle = styled.h1`
     color: #262626;
     opacity: 1;
     font-family: 'Poppins', sans-serif;
-
 `
 const TitleContainer = styled.div`
+    font-size:25px;
+    font-weight:800;
     overflow: hidden;
     width: 80px;
     height: 80px;
@@ -133,7 +137,7 @@ const SideBar = ({measure}) => {
 
   return (
     <LateralMenu 
-        display={measure ? "345px" : "0px"}
+        display={measure ? "340px" : "0px"}
         right={measure ? '0px' : '500px'}
         Height={measure ? "100%" : 0}>
         <ul >
