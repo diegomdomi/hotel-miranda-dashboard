@@ -50,8 +50,8 @@ const ElementsDiv = styled.div`
     }
     :hover{
     margin-right: 15px;
+    border-radius: 6px 0px 0px 6px;
     border-left: 8px solid red;
-    border-radius: 0px 8px 8px 0px;
 
     }
 
@@ -133,8 +133,6 @@ const AllRigths = styled.p`
 `
 const SideBar = ({measure}) => {
 
-    console.log(measure);
-
   return (
     <LateralMenu 
         display={measure ? "340px" : "0px"}
@@ -147,31 +145,31 @@ const SideBar = ({measure}) => {
         </MainTitleContainer>
         <Link to="/dashboard" style={{textDecoration:'none'}}>
             <ElementsDiv>
-                <RiDashboardLine/>
+                <RiDashboardLine size={25}/>
                 <ListItems>Dashboard</ListItems>            
             </ElementsDiv>
         </Link>
         <Link to="/bookings" style={{textDecoration:'none'}}>
             <ElementsDiv>
-                <TbCalendarMinus/>
+                <TbCalendarMinus size={25}/>
                 <ListItems>Bookings</ListItems>            
             </ElementsDiv>
         </Link>
         <Link to="/rooms" style={{textDecoration:'none'}}>
             <ElementsDiv>
-                <BiKey/>
+                <BiKey size={25}/>
             <ListItems>Rooms</ListItems>            
             </ElementsDiv>
         </Link>
         <Link to="/users" style={{textDecoration:'none'}}>
             <ElementsDiv>
-                <FaUserAlt/>
+                <FaUserAlt size={25}/>
                 <ListItems>Users</ListItems>            
             </ElementsDiv>
         </Link>
         <Link to="/contact" style={{textDecoration:'none'}}>
             <ElementsDiv>
-                <AiFillContacts/>
+                <AiFillContacts size={25}/>
                 <ListItems>Contact</ListItems>            
             </ElementsDiv>
         </Link>   

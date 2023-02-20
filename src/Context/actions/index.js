@@ -1,0 +1,7 @@
+export const ACTIONS_USER = {
+    LOGIN: "LOGIN_USER",
+    LOGOUT: "LOGOUT_USER",
+    UPDATE: "UPDATE_USER",
+}
+
+

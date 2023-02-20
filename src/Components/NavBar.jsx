@@ -6,8 +6,7 @@ import { BsBell } from 'react-icons/bs';
 import {FiLogOut} from 'react-icons/fi';
 import { useAuth } from '../Context/AuthProvider';
 import {  useNavigate,useLocation } from 'react-router-dom'
-/** */
-
+import { ACTIONS_USER } from '../Context/actions';
 const NavContainer = styled.div`
     transition: margin-left .5s;
     padding: 16px;
@@ -58,7 +57,7 @@ const NavBar = ({openNav,measure}) => {
 
 
   const logOut =()=>{
-    auth.logoutAuth()
+    auth.authDispatch({type:ACTIONS_USER.LOGOUT})
     navigate('/login')
   }
 
@@ -67,11 +66,11 @@ const NavBar = ({openNav,measure}) => {
   return (
     <>
       <NavContainer margin={measure ? "250px" : "0px"}>
-        <BiMenuAltLeft  onClick={openNav}/>
+        <BiMenuAltLeft  onClick={openNav} size={30}/>
         <TitleNav>{Title}</TitleNav>
-        <CiMail></CiMail>
-        <BsBell></BsBell>
-        <FiLogOut onClick={logOut}></FiLogOut>
+        <CiMail size={30}></CiMail>
+        <BsBell size={30}></BsBell>
+        <FiLogOut onClick={logOut} size={30}></FiLogOut>
       </NavContainer>
     </>
 

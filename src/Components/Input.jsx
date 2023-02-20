@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import React  from "react";
 
-export default function Input({ type, placeholder,name, handleInputChange}) {
+export default function Input({ type, placeholder,name, handleInputChange,value}) {
 
 
 
-  return <StyledInput type={type} placeholder={placeholder}  name={name} onChange={handleInputChange}/>;
+  return <StyledInput type={type} placeholder={placeholder} value={value} name={name} onChange={handleInputChange}/>;
 }
 
 const StyledInput = styled.input`

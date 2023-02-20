@@ -4,7 +4,7 @@ import Button from "./Button";
 import Input from "./Input";
 import {  useNavigate } from 'react-router-dom'
 import { useAuth } from '../Context/AuthProvider';
-
+import { ACTIONS_USER } from '../Context/actions';
 
 
 
@@ -14,14 +14,15 @@ function LoginUser() {
   const auth = useAuth()
   const [email, setEmail] = useState("usuario1@1.com")
   const [password, setPassword] = useState("111")
+  const [name, setName] = useState("usuario1")
 
 
   const handleSubmit = (e) =>{
     e.preventDefault()
-    auth.loginAuth({email,password})
+    // auth.loginAuth({email,password})
+  auth.authDispatch({type:ACTIONS_USER.LOGIN , payload:{email,password,name}})
     navigate('/dashboard')
     }
-
 
 
   return (
@@ -29,8 +30,9 @@ function LoginUser() {
     <MainContainer>
       <WelcomeText>Welcome</WelcomeText>
       <InputContainer>
-        <Input type="text" placeholder="Email" name="email"  handleInputChange={(e)=>setEmail(e.target.value)}/>
-        <Input type="password" placeholder="Password" name="password"  handleInputChange={(e)=>setPassword(e.target.value)}/>
+        <Input type="name" placeholder="Name" name="name"  handleInputChange={(e)=>setName(e.target.value)} value={name}/>
+        <Input type="text" placeholder="Email" name="email" handleInputChange={(e)=>setEmail(e.target.value)} value={email}/>
+        <Input type="password" placeholder="Password" name="password"  handleInputChange={(e)=>setPassword(e.target.value)} value={password}/>
       </InputContainer>
       <ButtonContainer>
         <Button content="Sign Up"  />
@@ -48,6 +50,7 @@ const MainContainer = styled.div`
   display: flex;
   margin: 0 auto;
   margin-top:60px;
+  padding-bottom:80px;
   align-items: center;
   flex-direction: column;
   height: 80vh;
@@ -97,7 +100,8 @@ const MainContainer = styled.div`
 
 const WelcomeText = styled.h2`
   margin: 3rem 0 2rem 0;
-  color:blue;
+  color:#346f99d9;
+  padding-bottom:50px;
 `;
 
 const InputContainer = styled.div`

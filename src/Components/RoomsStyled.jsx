@@ -1,27 +1,5 @@
 import styled from 'styled-components';
 
-import React from 'react'
-
-const RoomsStyled = () => {
-  return (
-    <>
-        <TableContainer></TableContainer>
-        <Table></Table>
-        <TableHead></TableHead>
-        <TableRow></TableRow>
-        <TableData></TableData>
-        <RowHeader></RowHeader>
-        <Paragraph></Paragraph>
-        <Span></Span>
-        <ImgContainer></ImgContainer>
-        <ImgContainer></ImgContainer>
-        <ParagraphContainer></ParagraphContainer>
-        <Button></Button>
-    </>
-  )
-}
-
-export default RoomsStyled
 
 const TableContainer = styled.div`
   width:90%;
@@ -94,3 +72,60 @@ const Button = styled.button`
   text-align: center;
   margin-left: 30px;
 `
+/** Button Header **/
+const HeaderContainer = styled.div`
+  display:flex;
+  justify-content: space-between
+`
+const ListTitleTopContainer = styled.div`
+  display: flex;
+  width:60%;
+  margin-bottom: 50px;
+`
+const ListTitleTop = styled.p`
+  color: rgb(110, 110, 110);
+  font-weight: 500;
+  padding: 12px 30px;
+  border-bottom: 1px solid rgb(212, 212, 212);
+  :hover{
+    color: #135846;
+    font-weight: 700;
+    cursor: pointer;
+    border-bottom: 2px solid #135846;
+  }
+`
+
+const NewRoomButtonContainer = styled.div`
+  display: flex;
+`
+const NewRoomButton = styled.button`
+  border-radius: 12px;
+  margin-left:20px;
+  background-color: ${props => props.bgColor};
+  width: ;
+  height:49px;
+  color:${props => props.color};
+  font-family:Poppins;
+  padding: 13px 23px;
+  border:none;
+`
+export {
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  TableData,
+  RowHeader,
+  Paragraph,
+  Span,
+  ImgContainer,
+  ParagraphContainer,
+  Button,
+  HeaderContainer,
+  ListTitleTopContainer,
+  ListTitleTop,
+  NewRoomButtonContainer,
+  NewRoomButton
+
+
+}
