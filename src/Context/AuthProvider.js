@@ -1,5 +1,4 @@
-import { createContext, useContext ,useReducer,useState  } from "react";
-import { ACTIONS_USER } from './actions/index';
+import { createContext, useContext ,useReducer  } from "react";
 import { myReducer } from "./reducers";
 const AuthContext = createContext({});
 
@@ -12,7 +11,6 @@ export const AuthProvider = ({ children }) => {
         email : '',
         isLogged:false
     }
-
 
     const[auth, authDispatch ] = useReducer(myReducer,JSON.parse(localStorage.getItem('userLogin')) || initialState)
 
