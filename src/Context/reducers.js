@@ -1,6 +1,5 @@
 import { ACTIONS_USER } from './actions/index';
 
-
 export const myReducer = (state,action)=>{
      switch (action.type) {
         case ACTIONS_USER.LOGIN:
