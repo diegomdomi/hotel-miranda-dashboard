@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import  {usersList}  from '../TemplatesTable/usersList.js';
 import styled from 'styled-components';
 import img from '../Assets/avatar1.jpg';
 import {HiPhone} from 'react-icons/hi'
+import { useDispatch,useSelector } from 'react-redux';
+import { fetchAsyncUsers } from '../Redux/userSlice.js';
 
 const TableContainer = styled.div`
   width:90%;
@@ -109,8 +111,14 @@ const NewRoomButton = styled.button`
   border:none;
 `
 const Users = () => {
-
   const users = usersList
+  const dispatch = useDispatch();
+  const usersStore = useSelector(state => state.usersSlice.list)
+  useEffect(() => {
+   dispatch(fetchAsyncUsers(users)) 
+  }, [dispatch,users])
+  
+
   return (
     <>
       <TableContainer>
@@ -138,7 +146,7 @@ const Users = () => {
           </thead>
           <tbody>
       {
-        users.map((users) => 
+        usersStore.map((users) => 
         (<TableRow key={users.id}>
           <ImgContainer>
             <TableData>

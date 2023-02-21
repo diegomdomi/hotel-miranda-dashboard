@@ -7,6 +7,7 @@ import {FiLogOut} from 'react-icons/fi';
 import { useAuth } from '../Context/AuthProvider';
 import {  useNavigate,useLocation } from 'react-router-dom'
 import { ACTIONS_USER } from '../Context/actions';
+
 const NavContainer = styled.div`
     transition: margin-left .5s;
     padding: 16px;

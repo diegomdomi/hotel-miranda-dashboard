@@ -1,9 +1,10 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import  {guestList}  from '../TemplatesTable/guestList.js';
 import styled from 'styled-components';
 import img from '../Assets/avatar1.jpg';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchAsyncBookings } from '../Redux/bookingsSlice.js';
 
 const TableContainer = styled.div`
   width:90%;
@@ -127,6 +128,13 @@ const NewRoomButton = styled.button`
 const Bookings = () => {
 
   const guest = guestList
+  const bookinkstore = useSelector(state=>state.bookingsSlice.list)
+  const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(fetchAsyncBookings(guest))
+    }, [dispatch, guest])
+    
   return (
     <>
       <TableContainer>
@@ -158,7 +166,7 @@ const Bookings = () => {
           </thead>
           <tbody>
       {
-        guest.map((guest) => 
+        bookinkstore.map((guest) => 
         (<TableRow key={guest.id}>
           <ImgContainer>
             <TableData>
