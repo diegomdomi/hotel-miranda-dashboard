@@ -5,6 +5,8 @@ import img from '../Assets/avatar1.jpg';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchAllBookings } from '../Redux/bookingsSlice.js';
 import { getSingleBooking } from '../Redux/bookingsSlice.js';
+import { Spinner } from './Spinner';
+
 const TableContainer = styled.div`
   width:90%;
   margin: 0 auto;
@@ -168,8 +170,7 @@ const Bookings = () => {
             </RowHeader>
           </thead>
           <tbody>
-      {
-        bookingstore.map((guest) => 
+      { bookingstore.map((guest) => 
         (<TableRow >
           <ImgContainer>
             <TableData onClick={() =>handleClick(guest.id)}>
