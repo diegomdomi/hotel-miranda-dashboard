@@ -7,7 +7,7 @@ import { FaUserAlt } from 'react-icons/fa';
 import { AiFillContacts } from 'react-icons/ai';
 import { AiFillHeart } from 'react-icons/ai';
 import { Link } from 'react-router-dom'
-
+import avatar from '../Assets/AritoAvatar.jfif'
  
 
 const LateralMenu = styled.div`
@@ -21,6 +21,7 @@ const LateralMenu = styled.div`
     box-shadow: 13px 3px 40px #00000005;
     overflow-x: hidden;
     transition: 0.5s;
+  
 `;
 
 const ListItems = styled.li`
@@ -39,6 +40,7 @@ const ListItems = styled.li`
     opacity: 1;
     list-style: none;
  
+ 
 ` 
 
 const ElementsDiv = styled.div`
@@ -52,8 +54,9 @@ const ElementsDiv = styled.div`
     margin-right: 15px;
     border-radius: 6px 0px 0px 6px;
     border-left: 8px solid red;
-
     }
+  
+  
 
 `
 
@@ -68,7 +71,7 @@ const DragDiv = styled.div`
     margin-top:60px;
     position: relative;
     bottom: 20px;
-    background-image: url()
+  
     
 `
 const MainTitle = styled.h1`
@@ -175,7 +178,9 @@ const SideBar = ({measure}) => {
         </Link>   
         </ul>
         <DivAvatar>
-            <DragDiv/>
+            <DragDiv>
+            <img src={avatar} style={{width:'60px', height:'60px'}} alt='avatar'/>
+            </DragDiv> 
             <UserName>Diego Dominguez</UserName> 
             <UserEmail>usuario1@gmail.com</UserEmail>
         </DivAvatar>

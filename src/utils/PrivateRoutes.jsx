@@ -1,5 +1,6 @@
 import { Outlet, Navigate } from 'react-router-dom'
 import { useAuth } from '../Context/AuthProvider.js'
+import Dashboard from '../Components/Dashboard.jsx';
 
 const PrivateRoutes = () => {
 

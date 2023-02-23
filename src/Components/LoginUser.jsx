@@ -1,6 +1,6 @@
 import React , { useState} from 'react';
 import styled from "styled-components";
-import Button from "./Button";
+import Button from "./ButtonStyled";
 import Input from "./Input";
 import {  useNavigate } from 'react-router-dom'
 import { useAuth } from '../Context/AuthProvider';

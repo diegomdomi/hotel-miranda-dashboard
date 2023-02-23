@@ -30,6 +30,8 @@ const TableRow = styled.tr`
     border-top: 1px solid rgb(212, 212, 212);
     :hover {
       box-shadow: 0px 4px 30px #00000014;
+
+
     }
 `
 
@@ -74,8 +76,9 @@ const Button = styled.button`
 `
 /** Button Header **/
 const HeaderContainer = styled.div`
+  width:60%;
   display:flex;
-  justify-content: space-between
+  justify-content: space-between;
 `
 const ListTitleTopContainer = styled.div`
   display: flex;
@@ -128,4 +131,4 @@ export {
   NewRoomButton
 
 
-}
+} 

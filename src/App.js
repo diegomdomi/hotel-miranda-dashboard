@@ -14,6 +14,7 @@ import SideBar from './Components/SideBar';
 import MainNavContainer from './Components/MainNavContainer';
 import MainDisplayContainer from './Components/MainDisplayContainer';
 import styled from 'styled-components';
+import BookingsDetails from './Components/BookingsDetails';
 
 function App() {
 
@@ -24,7 +25,6 @@ function App() {
         <div className="App" >
         {/* <MainDisplayContainer >
         </MainDisplayContainer> */}
-
             <MainNavContainer  >
             </MainNavContainer>
           <Routes>
@@ -32,6 +32,7 @@ function App() {
               <Route path="/dashboard" element={<Dashboard/>}/>
               <Route path="/user" element={<Users/>} />
               <Route path="/bookings" element={<Bookings/>} />
+              <Route path="/bookings/:id" element={<BookingsDetails/>} />
               <Route path="/rooms" element={<Rooms/>} />
               <Route path="/room/:id" element={<Room/>} />
               <Route path="/users" element={<Users/>} />

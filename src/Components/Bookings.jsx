@@ -1,6 +1,5 @@
 import React,{useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import  {guestList}  from '../TemplatesTable/guestList.js';
 import styled from 'styled-components';
 import img from '../Assets/avatar1.jpg';
 import { useSelector, useDispatch } from 'react-redux';
@@ -20,9 +19,9 @@ const TableContainer = styled.div`
   padding-bottom: 150px;
 `
 const Table = styled.table`
-border-collapse: collapse;
-background: #FFFFFF 0% 0% no-repeat padding-box;
-border-radius: 20px;
+  border-collapse: collapse;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  border-radius: 20px;
 
 `
 
@@ -60,8 +59,8 @@ const Span = styled.span`
   color:${props=>props.color};
 `
 const ImgContainer = styled.div`
-display:flex;
-align-items: center;
+  display:flex;
+  align-items: center;
 `
 const ParagraphContainer = styled.div`
   text-align:initial;
@@ -127,13 +126,12 @@ const NewRoomButton = styled.button`
 `
 const Bookings = () => {
 
-  const guest = guestList
   const bookinkstore = useSelector(state=>state.bookingsSlice.list)
   const dispatch = useDispatch();
 
     useEffect(() => {
-      dispatch(fetchAsyncBookings(guest))
-    }, [dispatch, guest])
+      dispatch(fetchAsyncBookings())
+    }, [dispatch])
     
   return (
     <>
@@ -167,7 +165,7 @@ const Bookings = () => {
           <tbody>
       {
         bookinkstore.map((guest) => 
-        (<TableRow key={guest.id}>
+        (<TableRow >
           <ImgContainer>
             <TableData>
                 <Link to={`/bookings/${guest.id}`} >

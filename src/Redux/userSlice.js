@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import  {usersList}  from '../TemplatesTable/usersList.js';
 
 const initialState = {
   list:[],
@@ -7,6 +8,7 @@ const initialState = {
 
   }
 
+const users = usersList
   function delayFunction (data, time = 200){
     return new Promise ((resolve)=>{
         setTimeout(()=>{
@@ -18,7 +20,7 @@ const initialState = {
   export const fetchAsyncUsers = createAsyncThunk(
     'room/delayFunction',
       async (data) => {
-        return await delayFunction(data)
+        return await delayFunction(users)
     })
 
 

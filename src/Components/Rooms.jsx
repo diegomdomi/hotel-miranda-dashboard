@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import  {roomsList}  from '../TemplatesTable/roomsList.js';
 import img from '../Assets/room4.jpg';
 import { useSelector,useDispatch } from 'react-redux';
-import { fetchAsyncRooms } from '../Redux/roomSlice.js';
+import { fetchAllRooms } from '../Redux/roomSlice.js';
+import  { deleteRoom } from '../Redux/roomSlice.js';
 import { TbDotsVertical } from 'react-icons/tb'
-
+import { TiDelete } from 'react-icons/ti'
+import styled from 'styled-components';
 import {
   TableContainer,
   Table,
@@ -27,15 +28,22 @@ import {
 } from './RoomsStyled'
 
 
+
+
 const Rooms = () => {
-  const rooms = roomsList
   const dispatch = useDispatch();
   const roomStore = useSelector(state=>state.roomSlice.list)
-
-useEffect(() => {
-  dispatch(fetchAsyncRooms(rooms))
-
-}, [dispatch,rooms])
+  
+  useEffect(() => {
+    dispatch(fetchAllRooms())
+    
+  }, [dispatch])
+  
+  const handleClickDelete = (id) => {
+    dispatch(deleteRoom(id))
+    
+  }
+  console.log(roomStore);
 
   return (
     <>
@@ -98,7 +106,7 @@ useEffect(() => {
               </Button>
             </TableData> 
             <TableData>
-            <TbDotsVertical/>
+              <TiDelete color={'red'} size={25} onClick={()=>handleClickDelete(room.id)}/>
             </TableData>
           </TableRow> ))
       }

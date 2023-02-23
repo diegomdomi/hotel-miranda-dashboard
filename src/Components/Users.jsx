@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import  {usersList}  from '../TemplatesTable/usersList.js';
 import styled from 'styled-components';
 import img from '../Assets/avatar1.jpg';
 import {HiPhone} from 'react-icons/hi'
@@ -111,12 +110,11 @@ const NewRoomButton = styled.button`
   border:none;
 `
 const Users = () => {
-  const users = usersList
   const dispatch = useDispatch();
   const usersStore = useSelector(state => state.usersSlice.list)
   useEffect(() => {
-   dispatch(fetchAsyncUsers(users)) 
-  }, [dispatch,users])
+   dispatch(fetchAsyncUsers()) 
+  }, [dispatch])
   
 
   return (
@@ -147,7 +145,7 @@ const Users = () => {
           <tbody>
       {
         usersStore.map((users) => 
-        (<TableRow key={users.id}>
+        (<TableRow >
           <ImgContainer>
             <TableData>
                 <Link to={`/guest/${users.id}`} >

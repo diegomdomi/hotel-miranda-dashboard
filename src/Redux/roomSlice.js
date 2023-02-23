@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { roomsList } from '../TemplatesTable/roomsList';
 
+const rooms = roomsList
 const initialState = {
   list:[],
   loading: false,
@@ -15,34 +17,74 @@ const initialState = {
     })
   }
 
-  export const fetchAsyncRooms = createAsyncThunk(
+  export const fetchAllRooms = createAsyncThunk(
     'room/delayFunction',
       async (data) => {
-        return await delayFunction(data)
+        return await delayFunction(rooms)
     })
 
+    export const getSingleRoom = createAsyncThunk(
+    'room/getSinlgeRoom',
+      async (id) => {
+        return id
+    })
+    export const deleteRoom = createAsyncThunk(
+      'room/deleteRoom',
+      async (id) => {
+        return id
+      })
+    export const addRoom = createAsyncThunk(
+      'room/addRoom',
+      async (newRoom) => {
+        return newRoom
+      })
+        
+    export const editRoom = createAsyncThunk(
+    'room/editRoom',
+      async (id) => {
+        return id
+    })
 
   export const roomSlice = createSlice({
     name:'room',
     initialState,
-    extraReducers: {
-      [fetchAsyncRooms.pending]: (state,action) => {
-        console.log("Loading...");
-        state.loading = true;
-        state.error = false;
-      },
-      [fetchAsyncRooms.fulfilled]: (state, action) => {
-        console.log("Load completed");
-        state.list = action.payload;
-        state.loading = false;
-        state.error = false;
-      },
-      [fetchAsyncRooms.rejected]: (state, action) => {
-        console.log("Failure while fetching data!");
-        state.loading = false;
-        state.error = true;
-      },
-    },
+    extraReducers(builder) {
+      builder
+        .addCase (fetchAllRooms.pending, (state,action) =>{
+          console.log('loading');
+          state.status = 'loading'
+        })
+        .addCase(fetchAllRooms.fulfilled, (state, action) =>{
+          console.log('load complete');
+          state.status = 'succeeded'
+          state.list = action.payload
+        })
+        .addCase(fetchAllRooms.rejected, (state,action) =>{
+          console.log('Failure while fetching data!');
+          state.status = 'failed'
+          state.error = action.erros.message
+        })
+        builder
+          .addCase(getSingleRoom.fulfilled, (state, action) =>{
+            state.list = state.list.find(room => room.id === action.payload)
+          })
+         
+        builder
+          .addCase(deleteRoom.fulfilled, (state,action)=>{
+            state.list = state.list.filter(room => room.id !== action.payload)
+            console.log(action.payload);
+            
+          })
+        builder
+          .addCase(addRoom.fulfilled, (state,action)=>{
+            state.list = [...state.list,action.payload]
+          }) 
+        builder     
+          .addCase(editRoom.fulfilled, (state,action)=>{
+            state.list = state.list.map(room => room.id === action.payload.id ? action.payload : room)
+          })
+    }
+    
   })
 
 export const selectRoom = (state) => state.room.list;

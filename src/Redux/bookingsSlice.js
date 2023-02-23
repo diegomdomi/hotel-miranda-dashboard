@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import  {guestList}  from '../TemplatesTable/guestList.js';
 
 const initialState = {
   list:[],
@@ -7,6 +8,7 @@ const initialState = {
 
   }
 
+  const bookings = guestList
   function delayFunction (data, time = 200){
     return new Promise ((resolve)=>{
         setTimeout(()=>{
@@ -19,7 +21,7 @@ const initialState = {
   export const fetchAsyncBookings = createAsyncThunk(
     'bookings/delayFunction',
       async (data) => {
-        return await delayFunction(data)
+        return await delayFunction(bookings)
     })
 
 
