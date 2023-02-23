@@ -1,17 +1,27 @@
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch} from 'react-redux';
 import {HiPhone} from 'react-icons/hi'
 import { BsChatText } from 'react-icons/bs'
 import { BiBed } from 'react-icons/bi';
 import { MdSecurity } from 'react-icons/md'
 import { AiOutlineWifi } from 'react-icons/ai';
 import img from '../Assets/room4.jpg';
-import avatar from '../Assets/AritoAvatar.jfif'
+import { Spinner } from './Spinner';
+import { useEffect } from 'react';
+import { getSingleBooking } from '../Redux/bookingsSlice.js';
+import { useParams } from 'react-router-dom';
+
 
 const BookingsDetails = () => {
   const bookingStore = useSelector(state=>state.bookingsSlice.singleBooking)
+  // const { id } = useParams();
+  // const dispatch = useDispatch()
 
-console.log(bookingStore);
+  // useEffect(() => {
+  //   dispatch(getSingleBooking(id))
+  // }, [bookingStore,id,dispatch])
+  
+
   return (
     <>
     <BookingsDetailsContainer>
@@ -98,7 +108,6 @@ console.log(bookingStore);
         <img src={img} alt="img"/>
         </ImageRightContainer>
       </BookingsDetailsContainer>
-
     </>
   )
 }

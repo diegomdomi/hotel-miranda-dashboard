@@ -21,6 +21,7 @@ const LateralMenu = styled.div`
     box-shadow: 13px 3px 40px #00000005;
     overflow-x: hidden;
     transition: 0.5s;
+
   
 `;
 
@@ -134,6 +135,12 @@ const AllRigths = styled.p`
     color: #799283;
     margin-top: ${props => props.margin}px;
 `
+const LinkContainer = styled.div`
+     a
+    :active{
+        color:red;
+    }
+`
 const SideBar = ({measure}) => {
 
   return (
@@ -146,6 +153,7 @@ const SideBar = ({measure}) => {
           <TitleContainer>H</TitleContainer>
           <MainTitle>Hotel Miranda</MainTitle>
         </MainTitleContainer>
+        <LinkContainer>
         <Link to="/dashboard" style={{textDecoration:'none'}}>
             <ElementsDiv>
                 <RiDashboardLine size={25}/>
@@ -175,7 +183,9 @@ const SideBar = ({measure}) => {
                 <AiFillContacts size={25}/>
                 <ListItems>Contact</ListItems>            
             </ElementsDiv>
-        </Link>   
+        </Link>  
+        </LinkContainer>
+
         </ul>
         <DivAvatar>
             <DragDiv>

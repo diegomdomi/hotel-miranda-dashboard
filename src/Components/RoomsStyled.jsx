@@ -11,7 +11,7 @@ const TableContainer = styled.div`
   align-content: space-around;
   align-items: center;
   margin-top:127px;
-  margin-left: 150px;
+  margin-left: 350px;
 `
 const Table = styled.table`
 border-collapse: collapse;
