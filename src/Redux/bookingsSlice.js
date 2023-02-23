@@ -3,6 +3,7 @@ import  {guestList}  from '../TemplatesTable/guestList.js';
 
 const initialState = {
   list:[],
+  singleBooking:'',
   loading: false,
   error: false
 
@@ -18,34 +19,73 @@ const initialState = {
     })
   }
 
-  export const fetchAsyncBookings = createAsyncThunk(
+  export const fetchAllBookings = createAsyncThunk(
     'bookings/delayFunction',
       async (data) => {
         return await delayFunction(bookings)
     })
-
+    export const getSingleBooking = createAsyncThunk(
+      'bookings/getSinlgeBooking',
+        async (id) => {
+          return id
+      })
+      export const deleteBooking = createAsyncThunk(
+        'bookings/deleteBooking',
+        async (id) => {
+          return id
+        })
+      export const addBooking = createAsyncThunk(
+        'bookings/addBooking',
+        async (newRoom) => {
+          return newRoom
+        })
+          
+      export const editBooking = createAsyncThunk(
+      'bookings/ediBooking',
+        async (id) => {
+          return id
+      })
 
   export const bookingsSlice = createSlice({
     name:'bookings',
     initialState,
-    extraReducers: {
-      [fetchAsyncBookings.pending]: (state,action) => {
-        console.log("Loading...");
-        state.loading = true;
-        state.error = false;
-      },
-      [fetchAsyncBookings.fulfilled]: (state, action) => {
-        console.log("Load completed");
-        state.list = action.payload;
-        state.loading = false;
-        state.error = false;
-      },
-      [fetchAsyncBookings.rejected]: (state, action) => {
-        console.log("Failure while fetching data!");
-        state.loading = false;
-        state.error = true;
-      },
-    },
+    extraReducers(builder) {
+      builder
+        .addCase (fetchAllBookings.pending, (state,action) =>{
+          console.log('loading');
+          state.status = 'loading'
+        })
+        .addCase(fetchAllBookings.fulfilled, (state, action) =>{
+          console.log('load complete');
+          state.status = 'succeeded'
+          state.list = action.payload
+        })
+        .addCase(fetchAllBookings.rejected, (state,action) =>{
+          console.log('Failure while fetching data!');
+          state.status = 'failed'
+          state.error = action.error.message
+        })
+        builder
+          .addCase(getSingleBooking.fulfilled, (state, action) =>{
+            state.singleBooking= state.list.find(booking => booking.id === action.payload)
+          })
+         
+        builder
+          .addCase(deleteBooking.fulfilled, (state,action)=>{
+            state.list = state.list.filter(booking => booking.id !== action.payload)
+            console.log(action.payload);
+            
+          })
+        builder
+          .addCase(addBooking.fulfilled, (state,action)=>{
+            state.list = [...state.list,action.payload]
+          }) 
+        builder     
+          .addCase(editBooking.fulfilled, (state,action)=>{
+            state.list = state.list.map(booking => booking.id === action.payload.id ? action.payload : booking)
+          })
+    }
+    
   })
 
 export const selectBookings= (state) => state.bookings.list;

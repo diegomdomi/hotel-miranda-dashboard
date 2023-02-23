@@ -1,6 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {HiPhone} from 'react-icons/hi'
 import { BsChatText } from 'react-icons/bs'
@@ -9,23 +7,25 @@ import { MdSecurity } from 'react-icons/md'
 import { AiOutlineWifi } from 'react-icons/ai';
 import img from '../Assets/room4.jpg';
 import avatar from '../Assets/AritoAvatar.jfif'
-const BookingsDetails = () => {
-  const bookinkstore = useSelector(state=>state.bookingsSlice.list)
-  const { id } = useParams()
 
+const BookingsDetails = () => {
+  const bookingStore = useSelector(state=>state.bookingsSlice.singleBooking)
+
+console.log(bookingStore);
   return (
     <>
-      <BookingsDetailsContainer>
+    <BookingsDetailsContainer>
         <DataContainer>
         <MainDataContainer>
         <MainDivTitle>
           <ImageContainer>
+          <img  src={bookingStore.img} alt="pic"/>
           </ImageContainer>
           <MainDataBookings>
             <TitleBookings>
-              Roberto Mansini
+             {bookingStore.Guest}
             </TitleBookings>
-            <IdBookings>ID 1234124512551</IdBookings>
+            <IdBookings>ID {bookingStore.id} /1234124512551</IdBookings>
             <ContactBookings>
               <IconPhoneContainer>
                 <HiPhone></HiPhone>
@@ -42,18 +42,18 @@ const BookingsDetails = () => {
         <CheckinOutDataContainer>
           <CheckinDataContainer margin={'110px'}>
             <CheckinDataSpan>Check in</CheckinDataSpan>
-            <CheckinDataDate>October 30th, 2020 | 08:23 AM</CheckinDataDate>
+            <CheckinDataDate>{bookingStore.Check_in} | 08:23 AM</CheckinDataDate>
           </CheckinDataContainer>
           <CheckinDataContainer>
             <CheckinDataSpan>Check out</CheckinDataSpan>
-            <CheckinDataDate>November 2th, 2020 </CheckinDataDate>
+            <CheckinDataDate>{bookingStore.Check_out}</CheckinDataDate>
           </CheckinDataContainer>
         </CheckinOutDataContainer>
         <Line></Line>
         <CheckinOutDataContainer>
           <CheckinDataContainer margin={'200px'}>
             <CheckinDataSpan>Room info</CheckinDataSpan>
-            <CheckinDataDate>Deluxe Z - 002424</CheckinDataDate>
+            <CheckinDataDate>{bookingStore.Room_type}</CheckinDataDate>
           </CheckinDataContainer>
           <CheckinDataContainer>
             <CheckinDataSpan>Price</CheckinDataSpan>
@@ -98,6 +98,7 @@ const BookingsDetails = () => {
         <img src={img} alt="img"/>
         </ImageRightContainer>
       </BookingsDetailsContainer>
+
     </>
   )
 }
@@ -112,6 +113,7 @@ const BookingsDetailsContainer = styled.div`
     box-shadow: 0px 3px 10px #00000005;
     margin-top:127px;
     margin-left: 450px;
+    margin-right:100px;
     background-color: #fff;
     border-radius: 15px;
     display:flex;
@@ -129,11 +131,14 @@ const MainDivTitle = styled.div`
   gap:30px;
 `
 const ImageContainer = styled.div`
-  width: 156px;
-  height: 156px;
-  background: #C5C5C5 0% 0% no-repeat padding-box;
-  border: 4px solid #FFFFFF;
+  width:95px;
+  height:95px;
   border-radius: 12px;
+  img{
+    width:100%;
+    height:100%;
+    border-radius: 20px;
+  }
 `
 const MainDataBookings = styled.div`
 
@@ -188,7 +193,9 @@ const CheckinDataSpan = styled.p`
   font: normal normal normal 14px Poppins;
 `
 const CheckinDataDate = styled.p`
-  font: normal normal medium 24px Poppins;
+  font-size: 24px 
+  font-family:Poppins;
+  font-weight: bolder;
 `
 
 const Line = styled.div`
@@ -239,4 +246,9 @@ const AmenitiesIconContainer = styled.div`
 `
 const ImageRightContainer = styled.div`
   width:50%;
+  img{
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+  }
 `

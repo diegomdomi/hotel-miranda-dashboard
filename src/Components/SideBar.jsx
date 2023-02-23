@@ -179,7 +179,7 @@ const SideBar = ({measure}) => {
         </ul>
         <DivAvatar>
             <DragDiv>
-            <img src={avatar} style={{width:'60px', height:'60px'}} alt='avatar'/>
+            <img src={avatar} style={{width:'60px', height:'60px', borderRadius:'16px'}} alt='avatar'/>
             </DragDiv> 
             <UserName>Diego Dominguez</UserName> 
             <UserEmail>usuario1@gmail.com</UserEmail>

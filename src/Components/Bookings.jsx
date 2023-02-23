@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import img from '../Assets/avatar1.jpg';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchAsyncBookings } from '../Redux/bookingsSlice.js';
-
+import { fetchAllBookings } from '../Redux/bookingsSlice.js';
+import { getSingleBooking } from '../Redux/bookingsSlice.js';
 const TableContainer = styled.div`
   width:90%;
   margin: 0 auto;
@@ -41,8 +41,9 @@ const TableRow = styled.tr`
 const TableData = styled.td`
   padding:25px;
   img{
-  width:45px;
-  height:45px
+    width:88px;
+  height:88px;
+  border-radius: 12px;
  }
 `
 const RowHeader = styled.tr`
@@ -126,13 +127,17 @@ const NewRoomButton = styled.button`
 `
 const Bookings = () => {
 
-  const bookinkstore = useSelector(state=>state.bookingsSlice.list)
+  const bookingstore = useSelector(state=>state.bookingsSlice.list)
   const dispatch = useDispatch();
 
     useEffect(() => {
-      dispatch(fetchAsyncBookings())
-    }, [dispatch])
+      dispatch(fetchAllBookings())
+    }, [dispatch,bookingstore])
     
+    const handleClick = (id)=>{
+      dispatch(getSingleBooking(id))
+      console.log(id);
+    }
   return (
     <>
       <TableContainer>
@@ -164,12 +169,12 @@ const Bookings = () => {
           </thead>
           <tbody>
       {
-        bookinkstore.map((guest) => 
+        bookingstore.map((guest) => 
         (<TableRow >
           <ImgContainer>
-            <TableData>
+            <TableData onClick={() =>handleClick(guest.id)}>
                 <Link to={`/bookings/${guest.id}`} >
-                  <img src={img} alt="img"/> 
+                  <img src={guest.img} alt="img"/> 
                 </Link>
             </TableData>
               <ParagraphContainer>

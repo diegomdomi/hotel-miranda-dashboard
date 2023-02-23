@@ -43,7 +43,6 @@ const Rooms = () => {
     dispatch(deleteRoom(id))
     
   }
-  console.log(roomStore);
 
   return (
     <>

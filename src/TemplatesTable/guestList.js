@@ -1,3 +1,16 @@
+import img1 from '../Assets/img1w.jpg';
+import img2 from '../Assets/img2w.jpg';
+import img3 from '../Assets/img3w.jpg'
+import img4 from '../Assets/img4m.jpg'
+import img5 from '../Assets/img5m.jpg'
+import img6 from '../Assets/img6w.jpg'
+import img7 from '../Assets/img7m.jpg'
+import img8 from '../Assets/img8w.jpg'
+import img9 from '../Assets/img9m.jpg'
+import img10 from '../Assets/img10m.jpg'
+import img11 from '../Assets/avatar1.jpg'
+import img12 from '../Assets/AritoAvatar.jfif'
+
 export const guestList = [{
     
     "id": 1,
@@ -7,38 +20,42 @@ export const guestList = [{
     "Check_out": "Nov 4th,2020",
     "Special_Request": "View Notes",
     "Room_type":"Deluxe A - 02",
-    "Status":"Refund"
+    "Status":"Refund",
+    img:img1
   }, {
     "id": 2,
-    "Guest": "Agosto",
+    "Guest": "Mike",
     "Order_Date":"Oct 30th 2020 09:21 AM",
     "Check_in": "Nov 2th, 2020",
     "Check_out": "Nov 4th,2020",
     "Special_Request": "View Notes",
     "Room_type":"Deluxe A - 02",
-    "Status":"Refund"
+    "Status":"Refund",
+    img:img4
 
 
   }, {
     "id": 3,
-    "Guest": "Joete",
+    "Guest": "Jenny",
     "Order_Date":"Oct 30th 2020 09:21 AM",
     "Check_in": "Nov 2th, 2020",
     "Check_out": "Nov 4th,2020",
     "Special_Request": "View Notes",
     "Room_type":"Deluxe A - 02",
-    "Status":"Booked"
+    "Status":"Booked",
+    img:img2
 
 
   }, {
     "id": 4,
-    "Guest": "Benni",
+    "Guest": "Benn",
     "Order_Date":"Oct 30th 2020 09:21 AM",
     "Check_in": "Nov 2th, 2020",
     "Check_out": "Nov 4th,2020",
     "Special_Request": "View Notes",
     "Room_type":"Deluxe A - 02",
-    "Status":"Booked"
+    "Status":"Booked",
+    img:img5
 
 
   }, {
@@ -49,7 +66,8 @@ export const guestList = [{
     "Check_out": "Nov 4th,2020",
     "Special_Request": "View Notes",
     "Room_type":"Deluxe A - 02",
-    "Status":"Refund"
+    "Status":"Refund",
+    img:img3
 
 
   }, {
@@ -60,7 +78,8 @@ export const guestList = [{
     "Check_out": "Nov 4th,2020",
     "Special_Request": "View Notes",
     "Room_type":"Deluxe A - 02",
-    "Status":"Booked"
+    "Status":"Booked",
+    img:img6
 
 
   }, {
@@ -71,7 +90,8 @@ export const guestList = [{
     "Check_out": "Nov 4th,2020",
     "Special_Request": "View Notes",
     "Room_type":"Deluxe A - 02",
-    "Status":"Booked"
+    "Status":"Booked",
+    img:img8
 
 
   }, {
@@ -82,7 +102,8 @@ export const guestList = [{
     "Check_out": "Nov 4th,2020",
     "Special_Request": "View Notes",
     "Room_type":"Deluxe A - 02",
-    "Status":"Refund"
+    "Status":"Refund",
+    img:img7
 
 
   }, {
@@ -93,7 +114,8 @@ export const guestList = [{
     "Check_out": "Nov 4th,2020",
     "Special_Request": "View Notes",
     "Room_type":"Deluxe A - 02",
-    "Status":"Refund"
+    "Status":"Refund",
+    img:img9
 
 
 
@@ -105,7 +127,8 @@ export const guestList = [{
     "Check_out": "Nov 4th,2020",
     "Special_Request": "View Notes",
     "Room_type":"Deluxe A - 02",
-    "Status":"Booked"
+    "Status":"Booked",
+    img:img11
 
 
   }, {
@@ -116,7 +139,9 @@ export const guestList = [{
     "Check_out": "Nov 4th,2020",
     "Special_Request": "View Notes",
     "Room_type":"Deluxe A - 02",
-    "Status":"Refund"
+    "Status":"Refund",
+    img:img10
+
 
 
   }, {
@@ -127,5 +152,6 @@ export const guestList = [{
     "Check_out": "Nov 4th,2020",
     "Special_Request": "View Notes",
     "Room_type":"Deluxe A - 02",
-    "Status":"Refund"
+    "Status":"Refund",
+    img:img12
   }]
