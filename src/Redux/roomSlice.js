@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { roomsList } from '../TemplatesTable/roomsList';
+import { delayFunction } from './helpers/delayFunction.js';
 
 const rooms = roomsList
 const initialState = {
@@ -7,14 +8,6 @@ const initialState = {
   loading: false,
   error: false
 
-  }
-
-  function delayFunction (data, time = 200){
-    return new Promise ((resolve)=>{
-        setTimeout(()=>{
-            resolve(data);
-        },time)
-    })
   }
 
   export const fetchAllRooms = createAsyncThunk(

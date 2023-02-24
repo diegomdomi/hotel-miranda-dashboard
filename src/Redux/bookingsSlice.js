@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import  {guestList}  from '../TemplatesTable/guestList.js';
+import { delayFunction } from './helpers/delayFunction.js';
+const bookings = guestList
 
 const initialState = {
   list:[],
@@ -9,15 +11,6 @@ const initialState = {
 
   }
 
-  const bookings = guestList
-  function delayFunction (data, time = 200){
-    return new Promise ((resolve)=>{
-        setTimeout(()=>{
-            resolve(data);
-            console.log(data);
-        },time)
-    })
-  }
 
   export const fetchAllBookings = createAsyncThunk(
     'bookings/delayFunction',
@@ -27,7 +20,8 @@ const initialState = {
     export const getSingleBooking = createAsyncThunk(
       'bookings/getSinlgeBooking',
         async (id) => {
-          return id
+          const fetchSingleBooking = bookings.find(booking => booking.id === id);
+          return await delayFunction(fetchSingleBooking)
       })
       export const deleteBooking = createAsyncThunk(
         'bookings/deleteBooking',
@@ -67,13 +61,14 @@ const initialState = {
         })
         builder
           .addCase(getSingleBooking.fulfilled, (state, action) =>{
-            state.singleBooking= state.list.find(booking => booking.id === action.payload)
+            state.status = 'succeeded';
+            state.singleBooking = action.payload
+            // state.singleBooking= state.list.find(booking => booking.id == action.payload)
           })
          
         builder
           .addCase(deleteBooking.fulfilled, (state,action)=>{
             state.list = state.list.filter(booking => booking.id !== action.payload)
-            console.log(action.payload);
             
           })
         builder

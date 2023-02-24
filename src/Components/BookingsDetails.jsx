@@ -13,29 +13,32 @@ import { useParams } from 'react-router-dom';
 
 
 const BookingsDetails = () => {
-  const bookingStore = useSelector(state=>state.bookingsSlice.singleBooking)
-  // const { id } = useParams();
-  // const dispatch = useDispatch()
-
-  // useEffect(() => {
-  //   dispatch(getSingleBooking(id))
-  // }, [bookingStore,id,dispatch])
+  const { id } = useParams();
+  const dispatch = useDispatch()
+  const bookingSingleStore = useSelector(state=>state.bookingsSlice.singleBooking)
   
+  useEffect(() => {
+    dispatch(getSingleBooking(Number(id)))
+  }, [])
+
 
   return (
     <>
+   { 
+    !bookingSingleStore ? <Spinner></Spinner>
+    :
     <BookingsDetailsContainer>
         <DataContainer>
         <MainDataContainer>
         <MainDivTitle>
           <ImageContainer>
-          <img  src={bookingStore.img} alt="pic"/>
+          <img  src={bookingSingleStore.img} alt="pic"/>
           </ImageContainer>
           <MainDataBookings>
             <TitleBookings>
-             {bookingStore.Guest}
+             {bookingSingleStore.Guest}
             </TitleBookings>
-            <IdBookings>ID {bookingStore.id} /1234124512551</IdBookings>
+            <IdBookings>ID {bookingSingleStore.id} /1234124512551</IdBookings>
             <ContactBookings>
               <IconPhoneContainer>
                 <HiPhone></HiPhone>
@@ -52,18 +55,18 @@ const BookingsDetails = () => {
         <CheckinOutDataContainer>
           <CheckinDataContainer margin={'110px'}>
             <CheckinDataSpan>Check in</CheckinDataSpan>
-            <CheckinDataDate>{bookingStore.Check_in} | 08:23 AM</CheckinDataDate>
+            <CheckinDataDate>{bookingSingleStore.Check_in} | 08:23 AM</CheckinDataDate>
           </CheckinDataContainer>
           <CheckinDataContainer>
             <CheckinDataSpan>Check out</CheckinDataSpan>
-            <CheckinDataDate>{bookingStore.Check_out}</CheckinDataDate>
+            <CheckinDataDate>{bookingSingleStore.Check_out}</CheckinDataDate>
           </CheckinDataContainer>
         </CheckinOutDataContainer>
         <Line></Line>
         <CheckinOutDataContainer>
           <CheckinDataContainer margin={'200px'}>
             <CheckinDataSpan>Room info</CheckinDataSpan>
-            <CheckinDataDate>{bookingStore.Room_type}</CheckinDataDate>
+            <CheckinDataDate>{bookingSingleStore.Room_type}</CheckinDataDate>
           </CheckinDataContainer>
           <CheckinDataContainer>
             <CheckinDataSpan>Price</CheckinDataSpan>
@@ -108,6 +111,7 @@ const BookingsDetails = () => {
         <img src={img} alt="img"/>
         </ImageRightContainer>
       </BookingsDetailsContainer>
+    }
     </>
   )
 }

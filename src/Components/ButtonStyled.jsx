@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Button({ content,handleClick }) {
+export default function ButtonStyled({ content,handleClick }) {
 
 
   return <StyledButton onClick={handleClick}>{content}</StyledButton>;

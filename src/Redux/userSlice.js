@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import  {usersList}  from '../TemplatesTable/usersList.js';
+import { delayFunction } from './helpers/delayFunction.js';
 
 const initialState = {
   list:[],
@@ -9,13 +10,7 @@ const initialState = {
   }
 
 const users = usersList
-  function delayFunction (data, time = 200){
-    return new Promise ((resolve)=>{
-        setTimeout(()=>{
-            resolve(data);
-        },time)
-    })
-  }
+
   export const fetchAllUsers = createAsyncThunk(
     'users/delayFunction',
       async (data) => {
