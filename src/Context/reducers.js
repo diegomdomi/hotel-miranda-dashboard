@@ -17,7 +17,7 @@ export const myReducer = (state,action)=>{
              }
         case ACTIONS_USER.LOGOUT:
             localStorage.removeItem('userLogin');
-            return { ...state, 
+            return {  
                     isLogged:false 
                 };
         case ACTIONS_USER.UPDATE:

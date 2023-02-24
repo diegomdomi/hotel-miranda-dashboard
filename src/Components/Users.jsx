@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import img from '../Assets/avatar1.jpg';
 import {HiPhone} from 'react-icons/hi'
 import { useDispatch,useSelector } from 'react-redux';
-import { fetchAsyncUsers } from '../Redux/userSlice.js';
+import { fetchAllUsers } from '../Redux/userSlice.js';
 
 const TableContainer = styled.div`
   width:90%;
@@ -113,8 +113,8 @@ const Users = () => {
   const dispatch = useDispatch();
   const usersStore = useSelector(state => state.usersSlice.list)
   useEffect(() => {
-   dispatch(fetchAsyncUsers()) 
-  }, [dispatch])
+   dispatch(fetchAllUsers()) 
+  }, [])
   
 
   return (

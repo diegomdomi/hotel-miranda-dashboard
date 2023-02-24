@@ -3,7 +3,7 @@ import  {guestList}  from '../TemplatesTable/guestList.js';
 
 const initialState = {
   list:[],
-  singleBooking:null,
+  singleBooking:{},
   loading: false,
   error: false
 
