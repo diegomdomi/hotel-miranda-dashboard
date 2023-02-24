@@ -24,20 +24,16 @@ import {
   ListTitleTop,
   NewRoomButtonContainer,
   NewRoomButton
-  
 } from './RoomsStyled'
-
-
-
+import { Spinner } from './Spinner';
 
 const Rooms = () => {
   const dispatch = useDispatch();
-  const roomStore = useSelector(state=>state.roomSlice.list)
+  const { list, status } = useSelector(state=>state.roomSlice)
   
   useEffect(() => {
     dispatch(fetchAllRooms())
-    
-  }, [dispatch])
+  },[dispatch])
   
   const handleClickDelete = (id) => {
     dispatch(deleteRoom(id))
@@ -46,7 +42,8 @@ const Rooms = () => {
 
   return (
     <>
-      <TableContainer>
+     {  status === 'loading' ? <Spinner/>
+     : <TableContainer>
         <HeaderContainer>
           <ListTitleTopContainer>
             <ListTitleTop >All Rooms</ListTitleTop>
@@ -72,7 +69,7 @@ const Rooms = () => {
           </thead>
           <tbody>
       {
-        roomStore.map((room) => 
+        list.map((room) => 
         (<TableRow key={room.id}>
           <ImgContainer>
             <TableData>
@@ -111,7 +108,7 @@ const Rooms = () => {
       }
     </tbody>
   </Table>
-  </TableContainer>
+  </TableContainer>}
     </>
   )
 }

@@ -32,7 +32,7 @@ const BookingsDetails = () => {
         <MainDataContainer>
         <MainDivTitle>
           <ImageContainer>
-          <img  src={bookingSingleStore.img} alt="pic"/>
+          <img src={bookingSingleStore.img} alt="pic"/>
           </ImageContainer>
           <MainDataBookings>
             <TitleBookings>
@@ -144,13 +144,14 @@ const MainDivTitle = styled.div`
   gap:30px;
 `
 const ImageContainer = styled.div`
-  width:95px;
-  height:95px;
+  width:100px;
+  height:100px;
+  padding:25px;
+img{
+  object-fit: cover;
+  width:100%;
+  height:100%;
   border-radius: 12px;
-  img{
-    width:100%;
-    height:100%;
-    border-radius: 20px;
   }
 `
 const MainDataBookings = styled.div`
@@ -212,7 +213,7 @@ const CheckinDataDate = styled.p`
 `
 
 const Line = styled.div`
-  width:40%;
+  width:90%;
   height:1px;
   background-color: #e8d8d8;
   margin-top: 35px;
