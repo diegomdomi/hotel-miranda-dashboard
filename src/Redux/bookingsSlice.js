@@ -3,7 +3,7 @@ import  {guestList}  from '../TemplatesTable/guestList.js';
 
 const initialState = {
   list:[],
-  singleBooking:'',
+  singleBooking:null,
   loading: false,
   error: false
 
@@ -42,8 +42,8 @@ const initialState = {
           
       export const editBooking = createAsyncThunk(
       'bookings/ediBooking',
-        async (id) => {
-          return id
+        async (room) => {
+          return room
       })
 
   export const bookingsSlice = createSlice({

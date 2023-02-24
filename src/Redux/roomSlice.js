@@ -41,8 +41,8 @@ const initialState = {
         
     export const editRoom = createAsyncThunk(
     'room/editRoom',
-      async (id) => {
-        return id
+      async (room) => {
+        return room
     })
 
   export const roomSlice = createSlice({
