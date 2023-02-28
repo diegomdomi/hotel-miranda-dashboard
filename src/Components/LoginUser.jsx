@@ -21,7 +21,7 @@ function LoginUser() {
     e.preventDefault()
     // auth.loginAuth({email,password})
   auth.authDispatch({type:ACTIONS_USER.LOGIN , payload:{email,password,name}})
-    navigate('/dashboard')
+    navigate('/')
     }
 
 

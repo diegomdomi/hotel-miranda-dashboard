@@ -7,7 +7,7 @@ import { FaUserAlt } from 'react-icons/fa';
 import { AiFillContacts } from 'react-icons/ai';
 import { AiFillHeart } from 'react-icons/ai';
 import { Link } from 'react-router-dom'
-import avatar from '../Assets/AritoAvatar.jfif'
+import avatar from '../Assets/perfil.png'
  
 
 const LateralMenu = styled.div`
