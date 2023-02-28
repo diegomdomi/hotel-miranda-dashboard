@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const MainDIvContainer = styled.div`
  min-height:100vh;
  display:flex;
- margin-left:350px;
+ margin-left:450px;
 `
 const ChildDivContainer = styled.div`
 display:flex;

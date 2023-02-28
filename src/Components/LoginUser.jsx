@@ -26,7 +26,7 @@ function LoginUser() {
 
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{paddingTop:'50px'}}>
     <MainContainer>
       <WelcomeText>Welcome</WelcomeText>
       <InputContainer>

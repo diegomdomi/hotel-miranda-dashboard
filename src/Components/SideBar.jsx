@@ -154,7 +154,7 @@ const SideBar = ({measure}) => {
           <MainTitle>Hotel Miranda</MainTitle>
         </MainTitleContainer>
         <LinkContainer>
-        <Link to="/dashboard" style={{textDecoration:'none'}}>
+        <Link to="/" style={{textDecoration:'none'}}>
             <ElementsDiv>
                 <RiDashboardLine size={25}/>
                 <ListItems>Dashboard</ListItems>            

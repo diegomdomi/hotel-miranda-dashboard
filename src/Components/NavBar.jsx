@@ -67,7 +67,7 @@ const NavBar = ({openNav,measure}) => {
   return (
     <>
       <NavContainer margin={measure ? "250px" : "0px"}>
-        <BiMenuAltLeft  onClick={openNav} size={30}/>
+        <BiMenuAltLeft  onClick={openNav} size={30} style={{cursor:'pointer'}}/>
         <TitleNav>{Title}</TitleNav>
         <CiMail size={30} style={{cursor:'pointer'}}></CiMail>
         <BsBell size={30} style={{cursor:'pointer'}}></BsBell>
