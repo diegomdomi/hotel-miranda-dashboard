@@ -19,10 +19,9 @@ function LoginUser() {
 
   const handleSubmit = (e) =>{
     e.preventDefault()
-    // auth.loginAuth({email,password})
-  auth.authDispatch({type:ACTIONS_USER.LOGIN , payload:{email,password,name}})
+    auth.authDispatch({type:ACTIONS_USER.LOGIN , payload:{email,password,name}})
     navigate('/')
-    }
+  }
 
 
   return (
@@ -35,7 +34,7 @@ function LoginUser() {
         <Input type="password" placeholder="Password" name="password"  handleInputChange={(e)=>setPassword(e.target.value)} value={password}/>
       </InputContainer>
       <ButtonContainer>
-        <Button content="Sign Up"  />
+        <Button  aria-label="button" color={'white'} background={'linear-gradient(to right, #14163c 0%, #03217b 79%)'}>Sign up</Button>
       </ButtonContainer>
       <MainTitleContainer>
           <TitleContainer>H</TitleContainer>
