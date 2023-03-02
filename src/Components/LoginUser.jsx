@@ -34,7 +34,7 @@ function LoginUser() {
         <Input type="password" placeholder="Password" name="password"  handleInputChange={(e)=>setPassword(e.target.value)} value={password}/>
       </InputContainer>
       <ButtonContainer>
-        <Button  aria-label="button" color={'white'} background={'linear-gradient(to right, #14163c 0%, #03217b 79%)'}>Sign up</Button>
+        <Button data-cy="btn-login" aria-label="button" color={'white'} background={'linear-gradient(to right, #14163c 0%, #03217b 79%)'}>Sign up</Button>
       </ButtonContainer>
       <MainTitleContainer>
           <TitleContainer>H</TitleContainer>
