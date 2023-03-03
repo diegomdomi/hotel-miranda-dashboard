@@ -71,7 +71,7 @@ const NavBar = ({openNav,measure}) => {
         <TitleNav>{Title}</TitleNav>
         <CiMail size={30} style={{cursor:'pointer'}}></CiMail>
         <BsBell size={30} style={{cursor:'pointer'}}></BsBell>
-        <FiLogOut onClick={logOut} size={30} style={{cursor:'pointer'}}></FiLogOut>
+        <FiLogOut data-cy="btn-logout"  onClick={logOut} size={30} style={{cursor:'pointer'}}></FiLogOut>
       </NavContainer>
     </>
 
