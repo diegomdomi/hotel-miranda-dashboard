@@ -1,7 +1,7 @@
 import React , { useState} from 'react';
 import styled from "styled-components";
 import Button from "./ButtonStyled";
-import Input from "./Input";
+import{ Input } from "./Input";
 import {  useNavigate } from 'react-router-dom'
 import { useAuth } from '../Context/AuthProvider';
 import { ACTIONS_USER } from '../Context/actions';
@@ -30,8 +30,8 @@ function LoginUser() {
       <WelcomeText>Welcome</WelcomeText>
       <InputContainer>
         <Input type="name" placeholder="Name" name="name"  handleInputChange={(e)=>setName(e.target.value)} value={name}/>
-        <Input type="text" placeholder="Email" name="email" handleInputChange={(e)=>setEmail(e.target.value)} value={email}/>
-        <Input type="password" placeholder="Password" name="password"  handleInputChange={(e)=>setPassword(e.target.value)} value={password}/>
+        <Input data-cy="input-email" type="text" placeholder="Email" name="email" handleInputChange={(e)=>setEmail(e.target.value)} value={email}/>
+        <Input data-cy="input-pass"  type="password" placeholder="Password" name="password"  handleInputChange={(e)=>setPassword(e.target.value)} value={password}/>
       </InputContainer>
       <ButtonContainer>
         <Button data-cy="btn-login" aria-label="button" color={'white'} background={'linear-gradient(to right, #14163c 0%, #03217b 79%)'}>Sign up</Button>

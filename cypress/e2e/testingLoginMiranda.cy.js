@@ -1,7 +1,54 @@
 describe('template spec', () => {
   it('passes', () => {
-    cy.visit('http://localhost:3000/hotel-miranda-dashboard/login');
-    cy.get('[data-cy="btn-login"]').click();
-    cy.get('[data-cy="btn-logout"]').click();
+    cy.visit('http://localhost:3000/hotel-miranda-dashboard/login')
+    cy.get('[data-cy="btn-login"]').click()
+    // cy.get('[data-cy="btn-logout"]').click()
   })
+  
+  it('Testing incorrect inputs', () => {
+  cy.visit('http://localhost:3000/hotel-miranda-dashboard/login')
+  cy.get('[data-cy="input-email"]').type ('usuario2@2.com')
+  // cy.get('[data-cy="input-email"]').should('have.value', 'usuario2@2.com')
+  cy.get('[data-cy="input-pass"]').type ('222',{ force: true })
+  cy.get('[data-cy="btn-login"]').click()
+  cy.url().should('contain', '/')
+
 })
+  it('Testing correct inputs', () => {
+  cy.visit('http://localhost:3000/hotel-miranda-dashboard/login')
+  cy.get('[data-cy="input-email"]').type ('usuario1@1.com')
+  cy.get('[data-cy="input-email"]').should('have.value', 'usuario1@1.com')
+  cy.get('[data-cy="input-pass"]').type ('111',{ force: true })
+  cy.get('[data-cy="btn-login"]').click()
+  cy.url().should('contain', '/')
+
+})
+
+it('Testing logout', () => {
+  cy.visit('http://localhost:3000/hotel-miranda-dashboard/login')
+  cy.get('[data-cy="input-email"]').type ('usuario1@1.com')
+  cy.get('[data-cy="input-pass"]').type ('111',{ force: true })
+  cy.get('[data-cy="btn-login"]').click()
+  cy.url().should('contain', '/')
+  cy.get('[data-cy="btn-logout"]').click()
+  cy.url().should('include', 'http://localhost:3000/hotel-miranda-dashboard/login')
+})
+})
+
+// describe('My First Test', () => {
+//   it('Gets, types and asserts', () => {
+//     cy.visit('https://example.cypress.io')
+
+//     cy.contains('type').click()
+
+//     // Should be on a new URL which
+//     // includes '/commands/actions'
+//     cy.url().should('include', '/commands/actions')
+
+//     // Get an input, type into it
+//     cy.get('.action-email').type('fake@email.com')
+
+//     //  Verify that the value has been updated
+//     cy.get('.action-email').should('have.value', 'fake@email.com')
+//   })
+// })

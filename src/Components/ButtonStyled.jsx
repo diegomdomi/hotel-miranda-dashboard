@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-// export default function ButtonStyled({ content,handleClick }) {
-
-
-//   return <StyledButton >Sign up</StyledButton>;
-// }
-
 const ButtonStyled = styled.button`
   margin-top:105px;
   ${'' /* background: linear-gradient(to right, #14163c 0%, #03217b 79%); */}
