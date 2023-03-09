@@ -23,10 +23,7 @@ function App() {
     <AuthProvider>
       <BrowserRouter basename='/hotel-miranda-dashboard'>
         <div className="App" >
-        {/* <MainDisplayContainer >
-        </MainDisplayContainer> */}
-            <MainNavContainer  >
-            </MainNavContainer>
+            <MainNavContainer  />
           <Routes>
             <Route element={<PrivateRoutes /> } >
               <Route exact path="/" element={<Dashboard/>}/>
