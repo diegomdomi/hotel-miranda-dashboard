@@ -1,4 +1,4 @@
-export function delayFunction (data, time = 200){
+export function delayFunction (data:any, time:number = 200){
   return new Promise ((resolve)=>{
       setTimeout(()=>{
           resolve(data);

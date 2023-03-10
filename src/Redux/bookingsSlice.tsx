@@ -1,48 +1,59 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { List } from 'cypress/types/lodash/index.js';
 import  {guestList}  from '../TemplatesTable/guestList.js';
 import { delayFunction } from './helpers/delayFunction.js';
+import {Booking} from '../Interfaces/BookingInterface'
 const bookings = guestList
 
-const initialState = {
+interface IBooking {
+  list: Booking[] | [];
+  singleBooking: Booking | null;
+  status: 'loading' | 'succeeded' | 'failed' | null;
+  error?:string
+}
+const initialState: IBooking = {
   list:[],
-  singleBooking:{},
-  loading: false,
-  error: false
-
+  singleBooking:null,
+  status:null,
+  error:''
   }
 
 
   export const fetchAllBookings = createAsyncThunk(
     'bookings/delayFunction',
       async (data) => {
-        return await delayFunction(bookings)
+      return await delayFunction(bookings) as Booking[]
     })
-    export const getSingleBooking = createAsyncThunk(
-      'bookings/getSinlgeBooking',
-        async (id) => {
-          const fetchSingleBooking = bookings.find(booking => booking.id === id);
-          return await delayFunction(fetchSingleBooking)
+
+  export const getSingleBooking = createAsyncThunk(
+    'bookings/getSinlgeBooking',
+        async (id:number) => {
+        const fetchSingleBooking = bookings.find(booking => booking.id === id);
+        return await delayFunction(fetchSingleBooking) as Booking
       })
-      export const deleteBooking = createAsyncThunk(
-        'bookings/deleteBooking',
-        async (id) => {
-          return id
-        })
-      export const addBooking = createAsyncThunk(
-        'bookings/addBooking',
-        async (newRoom) => {
-          return newRoom
-        })
+
+  export const deleteBooking = createAsyncThunk(
+    'bookings/deleteBooking',
+        async (id:number) => {
+        return id
+      })
+      
+  export const addBooking = createAsyncThunk(
+    'bookings/addBooking',
+        async (newRoom:Booking) => {
+        return newRoom
+      })
           
-      export const editBooking = createAsyncThunk(
-      'bookings/ediBooking',
-        async (room) => {
-          return room
+  export const editBooking = createAsyncThunk(
+    'bookings/ediBooking',
+        async (room:Booking) => {
+        return room
       })
 
   export const bookingsSlice = createSlice({
     name:'bookings',
     initialState,
+    reducers:{},
     extraReducers(builder) {
       builder
         .addCase (fetchAllBookings.pending, (state,action) =>{
@@ -83,6 +94,6 @@ const initialState = {
     
   })
 
-export const selectBookings= (state) => state.bookings.list;
+export const selectBookings = (state:any):Booking[] => state.bookings.list;
 
 export default bookingsSlice.reducer
