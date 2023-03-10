@@ -1,16 +1,18 @@
 export interface Booking {
     id: number;
-    guest: string;
-    orderDate: string;
-    checkin: string;
-    checkout: string;
+    Guest: string;
+    Order_Date: string;
+    Check_in: string;
+    Check_out: string;
     roomId?: number;
     price: number;
-    specialRequest: string;
+    Special_Request: string;
     amenities?: string[];
-    typeRoom: string;
+    Room_type: string;
     description: string;
-    photo: {};
-    state: string
+    Status: string,
+    img:{}
+
 
 }
+
