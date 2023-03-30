@@ -11,8 +11,6 @@ export interface Booking {
     Room_type: string;
     description: string;
     Status: string,
-    img:{}
-
-
+    img:string
 }
 
