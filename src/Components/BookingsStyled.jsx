@@ -34,7 +34,7 @@ const TableRow = styled.tr`
 `
 
 const TableData = styled.td`
-  width:100px;
+  ${'' /* width:100px; */}
   height:100px;
   padding:25px;
 img{

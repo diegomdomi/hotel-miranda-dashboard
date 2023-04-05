@@ -5,7 +5,7 @@ import { BiBed } from 'react-icons/bi'
 import {TbCalendarMinus} from 'react-icons/tb'
 import {RiLoginBoxLine } from 'react-icons/ri'
 import { SlLogout } from 'react-icons/sl'
-
+import CardContact from './CardContact'
 import {
   MainDIvContainer,
   ChildDivContainer,
@@ -13,7 +13,31 @@ import {
   DashboardParagraph,
   DashboardSpan,
   IconContainer
-} from './DashboardStyles'
+} from './DashboardStyles';
+import styled from "styled-components";
+
+const ContactCardsContainer = styled.div`
+  margin-top: 40px;
+  width: 1475px;
+  margin-left:450px;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 4px 4px #00000005;
+  border-radius: 20px;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-bottom: 70px;
+`
+const CardsContainer = styled.div`
+  display:flex;
+`
+const Title = styled.h2`
+  width: 100%;
+  padding-bottom: 30px;
+  text-align: left;
+  font: normal normal medium 20px/30px Poppins;
+  letter-spacing: 0px;
+  color: #393939;
+`
 
 const Dashboard = () => {
 
@@ -73,6 +97,14 @@ const Dashboard = () => {
         </DashboardParagraph>
       </ChildDivContainer>
     </MainDIvContainer>
+    <ContactCardsContainer>
+      <Title>Latest Review by Customers</Title>
+      <CardsContainer>
+        <CardContact/>
+        <CardContact/>
+        <CardContact/>
+      </CardsContainer>
+    </ContactCardsContainer>
     </>
     )
 }

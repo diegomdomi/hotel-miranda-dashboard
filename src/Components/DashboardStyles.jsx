@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const MainDIvContainer = styled.div`
- min-height:100vh;
  display:flex;
  margin-left:450px;
 `
