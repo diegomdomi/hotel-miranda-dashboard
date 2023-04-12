@@ -4,7 +4,7 @@ export const myReducer = (state,action)=>{
      switch (action.type) {
         case ACTIONS_USER.LOGIN:
             if(action.payload.email === 'usuario1@1.com' && action.payload.name === 'usuario1' && action.payload.password === '111'){
-                localStorage.setItem("userLogin", JSON.stringify({email: "usuario1@1.com", name:'usuario1' ,isLogged: true}));
+                localStorage.setItem("userLogin", JSON.stringify({email: "usuario1@1.com", name:'usuario1' ,isLogged: true, token:action.payload.token}));
             }else{
                 alert('something went wrong')
                return { ...state, isLogged: false}
@@ -13,7 +13,8 @@ export const myReducer = (state,action)=>{
                  ...state,
                  email: action.payload.email,
                  name: action.payload.name,  
-                 isLogged:true
+                 isLogged:true,
+                 token: action.payload.token
              }
         case ACTIONS_USER.LOGOUT:
             localStorage.removeItem('userLogin');

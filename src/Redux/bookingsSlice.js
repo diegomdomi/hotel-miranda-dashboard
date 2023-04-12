@@ -8,9 +8,7 @@ const initialState = {
   singleBooking:{},
   loading: false,
   error: false
-
   }
-
 
   export const fetchAllBookings = createAsyncThunk(
     'bookings/delayFunction',

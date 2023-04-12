@@ -8,12 +8,8 @@ import Contact from './Components/Contact';
 import LoginUser from './Components/LoginUser'
 import Dashboard from './Components/Dashboard';
 import PrivateRoutes from './utils/PrivateRoutes';
-import { AuthProvider, useAuth } from './Context/AuthProvider';
-import NavBar from './Components/NavBar';
-import SideBar from './Components/SideBar';
+import { AuthProvider} from './Context/AuthProvider';
 import MainNavContainer from './Components/MainNavContainer';
-import MainDisplayContainer from './Components/MainDisplayContainer';
-import styled from 'styled-components';
 import BookingsDetails from './Components/BookingsDetails';
 
 function App() {
@@ -23,8 +19,6 @@ function App() {
     <AuthProvider>
       <BrowserRouter basename='/hotel-miranda-dashboard'>
         <div className="App" >
-        {/* <MainDisplayContainer >
-        </MainDisplayContainer> */}
             <MainNavContainer  >
             </MainNavContainer>
           <Routes>
