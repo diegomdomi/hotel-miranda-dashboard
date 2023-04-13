@@ -27,12 +27,9 @@ import { Spinner } from './Spinner';
 const Rooms = () => {
   const dispatch = useDispatch();
   const { list, status } = useSelector(state=>state.roomSlice)
-  console.log(list);
-
   useEffect(() => {
     dispatch(fetchAllRooms())
   },[dispatch])
-  
   
   const handleClickDelete = (id) => {
     dispatch(deleteRoom(id))

@@ -27,7 +27,7 @@ import {
 const Users = () => {
   const dispatch = useDispatch();
   const { list, status } = useSelector(state => state.usersSlice)
-  console.log(list);
+
   useEffect(() => {
    dispatch(fetchAllUsers()) 
   }, [])
@@ -44,8 +44,13 @@ const Users = () => {
             <ListTitleTop>Inactive Employee</ListTitleTop>
           </ListTitleTopContainer>
           <NewRoomButtonContainer>
-            <NewRoomButton bgColor={'#135846'}
-              color={"white"}>+ New Employee</NewRoomButton>
+          <Link to={'/form'}> 
+            <NewRoomButton 
+              bgColor={'#135846'}
+              color={"white"}>
+              + New Employee
+            </NewRoomButton>
+            </Link>
             <NewRoomButton color={'#135846'}>Newest</NewRoomButton>
           </NewRoomButtonContainer>
         </HeaderContainer>

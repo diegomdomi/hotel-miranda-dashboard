@@ -6,17 +6,6 @@ export function delayFunction (data, time = 200){
   })
 }
 
-// export const requestGET = (url) => {
-//     const getLs = JSON.parse(localStorage.getItem("userLogin"))
-//     return fetch({
-//       url: `${url}/bookings`,
-//       headers: {
-//           "Authorization": `Bearer ${getLs.token}`,
-//           "Content-Type": "application/json"
-//       }
-//     }).then((response) => {return response.json().then((jsonData) => {return jsonData})})
-// }
-
 export const requestGET = async (url) => {
      const getLs = JSON.parse(localStorage.getItem("userLogin"));
   try{
@@ -49,7 +38,6 @@ export const requestDELETE = async (url) => {
 
   const response = await fetch(url, requestOptions);
   const data = await response.json();
-  
   return data.data;
     }
     catch (err) {

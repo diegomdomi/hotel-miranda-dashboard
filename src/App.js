@@ -11,6 +11,7 @@ import PrivateRoutes from './utils/PrivateRoutes';
 import { AuthProvider} from './Context/AuthProvider';
 import MainNavContainer from './Components/MainNavContainer';
 import BookingsDetails from './Components/BookingsDetails';
+import {Form }from './Components/Form';
 
 function App() {
 
@@ -27,10 +28,11 @@ function App() {
               <Route path="/user" element={<Users/>} />
               <Route path="/bookings" element={<Bookings/>} />
               <Route path="/bookings/:id" element={<BookingsDetails/>} />
-              <Route path="/rooms" element={<Rooms/>} />
+              <Route path="/rooms" element={<Rooms />} />
               <Route path="/room/:id" element={<Room/>} />
               <Route path="/users" element={<Users/>} />
               <Route path="/contact" element={<Contact/>} />
+              <Route path="/form" element={<Form/>} />
             </Route>
             <Route  path ="/login" element={<LoginUser/>}/>
           </Routes> 

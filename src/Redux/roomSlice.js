@@ -65,11 +65,21 @@ const initialState = {
           })
          
         builder
-          .addCase(deleteRoom.fulfilled, (state,action)=>{
-            state.list = state.list.filter(room => room.id !== action.payload)
-            // console.log(action.payload);
-            
+          .addCase (deleteRoom.pending, (state,action) =>{
+            console.log('loading');
+            state.status = 'loading'
           })
+
+          .addCase(deleteRoom.fulfilled, (state,action)=>{
+            state.status = 'succeeded'
+            state.list = state.list.filter(room => Number(room.id) !== Number(action.payload))
+          })
+       
+          .addCase (deleteRoom.rejected, (state,action) =>{
+            console.log('loading');
+            state.status = 'failed'
+          })
+
         builder
           .addCase(addRoom.fulfilled, (state,action)=>{
             state.list = [...state.list,action.payload]
