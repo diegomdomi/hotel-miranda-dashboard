@@ -28,7 +28,6 @@ const Bookings = () => {
 
   const { list,status } = useSelector(state=>state.bookingsSlice)
   const dispatch = useDispatch();
-
     useEffect(() => {
       dispatch(fetchAllBookings())
     }, [])
@@ -71,47 +70,48 @@ const Bookings = () => {
           <ImgContainer>
             <TableData >
                 <Link to={`/bookings/${guest.id}`} >
-                  <img src={guest.img} alt="img"/>
+                  <img src={guest.img} alt={guest.guest}/>
                 </Link>
             </TableData>
               <ParagraphContainer>
-                <Paragraph>{guest.Guest}</Paragraph>
+                <Paragraph>{guest.guest}</Paragraph>
                 <Span color={'#799283'}>#000123456</Span>
               </ParagraphContainer>
               </ImgContainer>
             <TableData>
-              <Paragraph>{guest.Order_Date}</Paragraph>
+              <Paragraph>{guest.order_date}</Paragraph>
             </TableData>
             <TableData>
               <Paragraph>
-                {guest.Check_in}
+                {guest.check_in}
               </Paragraph>
                 <Span>9:46 PM</Span>
             </TableData>
             <TableData>
               <Paragraph>
-              {guest.Check_out}
+              {guest.check_out}
               </Paragraph>
               <Span>6:12 PM</Span>
             </TableData>
             <TableData>
               <ViewNotesButton
-                color={guest.Status === 'Refund' ? '#212121' : '#799283'}
-                bgcolor={guest.Status === 'Refund'? '#EEF9F2' : 'white'}
-                border={guest.Status === 'Booked' ? '1px solid ' : 'none'}>
-                {guest.Special_Request}
+                color={guest.special_request === "None" ? '#212121' : '#799283'}
+                bgcolor={guest.special_request === 'None'? 'white' : '#EEF9F2' }
+                border={guest.special_request === 'None' ? 'none' : '1px solid ' }>
+                {guest.special_request}
               </ViewNotesButton>
             </TableData>
             <TableData>
               <Paragraph>
-              {guest.Room_type}
+              {guest.room_type}
               </Paragraph>
             </TableData>
             <TableData>
               <Button
-                color={guest.Status === 'Refund'? 'red' : '#5AD07A'}
-                bgcolor={guest.Status === 'Refund'? '#FFEDEC' : '#E8FFEE'}>
+                color={guest.status === '1'? 'red' : '#5AD07A'}
+                bgcolor={guest.status === '1'? '#FFEDEC' : '#E8FFEE'}>
                 {guest.Status}
+                <p>{guest.status === "2" ? 'Booked' : 'Refund'}</p>
               </Button>
             </TableData>
           </TableRow> ))

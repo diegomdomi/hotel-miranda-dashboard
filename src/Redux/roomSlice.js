@@ -1,19 +1,20 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { roomsList } from '../TemplatesTable/roomsList';
-import { delayFunction } from './helpers/delayFunction.js';
+import { delayFunction,requestDELETE,requestGET } from './helpers/delayFunction.js';
+const url = process.env.REACT_APP_URL
 
 const rooms = roomsList
 const initialState = {
   list:[],
   loading: false,
   error: false
-
-  }
+}
 
   export const fetchAllRooms = createAsyncThunk(
-    'room/delayFunction',
+    'room/requestGET',
       async (data) => {
-        return await delayFunction(rooms)
+        // return await delayFunction(rooms)
+        return await requestGET(`${url}/rooms`)
     })
 
     export const getSingleRoom = createAsyncThunk(
@@ -24,7 +25,8 @@ const initialState = {
     export const deleteRoom = createAsyncThunk(
       'room/deleteRoom',
       async (id) => {
-        return id
+        return await requestDELETE(`${url}/rooms/${id}`)
+        // return id
       })
     export const addRoom = createAsyncThunk(
       'room/addRoom',
@@ -65,7 +67,7 @@ const initialState = {
         builder
           .addCase(deleteRoom.fulfilled, (state,action)=>{
             state.list = state.list.filter(room => room.id !== action.payload)
-            console.log(action.payload);
+            // console.log(action.payload);
             
           })
         builder

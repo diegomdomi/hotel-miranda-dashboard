@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import  {usersList}  from '../TemplatesTable/usersList.js';
-import { delayFunction } from './helpers/delayFunction.js';
-
+import { delayFunction, requestGET } from './helpers/delayFunction.js';
+const url = process.env.REACT_APP_URL
 const initialState = {
   list:[],
   loading: false,
@@ -9,12 +9,13 @@ const initialState = {
 
   }
 
-const users = usersList
+// const users = usersList
 
   export const fetchAllUsers = createAsyncThunk(
-    'users/delayFunction',
+    'users/requestGET',
       async (data) => {
-        return await delayFunction(users)
+        // return await delayFunction(users)
+        return await requestGET(`${url}/users`)
     })
     export const getSingleUser = createAsyncThunk(
       'users/getSinlgeUser',

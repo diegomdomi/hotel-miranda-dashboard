@@ -27,6 +27,7 @@ import {
 const Users = () => {
   const dispatch = useDispatch();
   const { list, status } = useSelector(state => state.usersSlice)
+  console.log(list);
   useEffect(() => {
    dispatch(fetchAllUsers()) 
   }, [])
@@ -65,33 +66,33 @@ const Users = () => {
           <ImgContainer>
             <TableData>
                 <Link to={`/guest/${users.id}`} >
-                  <img src={img} alt="img"/> 
+                  <img src={users.img} alt="img"/> 
                 </Link>
             </TableData>
               <ParagraphContainer>
-                <Paragraph weight={'700'}>{users.Name}</Paragraph>
+                <Paragraph weight={'700'}>{users.first_name}</Paragraph>
                 <Span >#000123456</Span>
                 <Span>Joined on Aug 2th 2017</Span>
               </ParagraphContainer>
               </ImgContainer> 
             <TableData>
-              <Paragraph>{users.Job_Desk}</Paragraph>
+              <Paragraph>{users.job_desk}</Paragraph>
             </TableData> 
             <TableData>
               <Paragraph>
-                {users.Schedule}
+                {users.schedules}
               </Paragraph>
               <Span color={'#135846'}>Check Schedule</Span>
             </TableData> 
             <TableData>
               <Paragraph>
               <HiPhone style={{paddingRight:'15px'}}/>
-              {users.Contact}
+              {users.contact}
               </Paragraph>
             </TableData> 
             <TableData>
-              <Paragraph color={users.Status === 'INACTIVE'? 'red' : '#5AD07A'}>
-              {users.Status}
+              <Paragraph color={users.status === 'INACTIVE'? 'red' : '#5AD07A'}>
+              {users.status}
               </Paragraph>
             </TableData> 
         

@@ -16,7 +16,7 @@ const BookingsDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch()
   const bookingSingleStore = useSelector(state=>state.bookingsSlice.singleBooking)
-  
+  // console.log(bookingSingleStore);  
   useEffect(() => {
     dispatch(getSingleBooking(Number(id)))
   }, [])
@@ -55,18 +55,18 @@ const BookingsDetails = () => {
         <CheckinOutDataContainer>
           <CheckinDataContainer margin={'110px'}>
             <CheckinDataSpan>Check in</CheckinDataSpan>
-            <CheckinDataDate>{bookingSingleStore.Check_in} | 08:23 AM</CheckinDataDate>
+            <CheckinDataDate>{bookingSingleStore.check_in} | 08:23 AM</CheckinDataDate>
           </CheckinDataContainer>
           <CheckinDataContainer>
             <CheckinDataSpan>Check out</CheckinDataSpan>
-            <CheckinDataDate>{bookingSingleStore.Check_out}</CheckinDataDate>
+            <CheckinDataDate>{bookingSingleStore.check_out}</CheckinDataDate>
           </CheckinDataContainer>
         </CheckinOutDataContainer>
         <Line></Line>
         <CheckinOutDataContainer>
           <CheckinDataContainer margin={'200px'}>
             <CheckinDataSpan>Room info</CheckinDataSpan>
-            <CheckinDataDate>{bookingSingleStore.Room_type}</CheckinDataDate>
+            <CheckinDataDate>{bookingSingleStore.room_type}</CheckinDataDate>
           </CheckinDataContainer>
           <CheckinDataContainer>
             <CheckinDataSpan>Price</CheckinDataSpan>

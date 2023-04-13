@@ -1,26 +1,29 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import  {guestList}  from '../TemplatesTable/guestList.js';
-import { delayFunction } from './helpers/delayFunction.js';
+import { delayFunction, requestGET } from './helpers/delayFunction.js';
 const bookings = guestList
+const url = process.env.REACT_APP_URL
 
 const initialState = {
   list:[],
   singleBooking:{},
   loading: false,
   error: false
-  }
-
+}
   export const fetchAllBookings = createAsyncThunk(
-    'bookings/delayFunction',
-      async (data) => {
-        return await delayFunction(bookings)
+    'bookings/requestGET',
+      async (
+      ) => {
+        // return await delayFunction(bookings)
+        return await requestGET(`${url}/bookings`)
     })
     export const getSingleBooking = createAsyncThunk(
       'bookings/getSinlgeBooking',
         async (id) => {
-          const fetchSingleBooking = bookings.find(booking => booking.id === id);
-          return await delayFunction(fetchSingleBooking)
-      })
+          return await requestGET(`${url}/bookings/${id}`)
+          // const fetchSingleBooking = bookings.find(booking => booking.id === id);
+          // return await delayFunction(fetchSingleBooking)
+        })
       export const deleteBooking = createAsyncThunk(
         'bookings/deleteBooking',
         async (id) => {
@@ -61,6 +64,7 @@ const initialState = {
           .addCase(getSingleBooking.fulfilled, (state, action) =>{
             state.status = 'succeeded';
             state.singleBooking = action.payload
+            // console.log(state.singleBooking);
             // state.singleBooking= state.list.find(booking => booking.id == action.payload)
           })
          

@@ -17,7 +17,7 @@ const sendForm = async (email,password) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ "email": email , "password": password})
   };
-  const response = await fetch(url, requestOptions);
+  const response = await fetch(`${url}/login`, requestOptions);
   const data = await response.json();
   return data
     }
@@ -37,6 +37,7 @@ function LoginUser() {
   const handleSubmit = async (e) =>{
     e.preventDefault()
     const {token} = await sendForm(email,password)
+  
     auth.authDispatch({type:ACTIONS_USER.LOGIN , payload:{email,password,name, token}})
     navigate('/')
     }

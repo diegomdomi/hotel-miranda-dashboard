@@ -1,12 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import img from '../Assets/room4.jpg';
 import { useSelector,useDispatch } from 'react-redux';
 import { fetchAllRooms } from '../Redux/roomSlice.js';
 import  { deleteRoom } from '../Redux/roomSlice.js';
-import { TbDotsVertical } from 'react-icons/tb'
 import { TiDelete } from 'react-icons/ti'
-import styled from 'styled-components';
 import {
   TableContainer,
   Table,
@@ -30,16 +27,16 @@ import { Spinner } from './Spinner';
 const Rooms = () => {
   const dispatch = useDispatch();
   const { list, status } = useSelector(state=>state.roomSlice)
-  
+  console.log(list);
+
   useEffect(() => {
     dispatch(fetchAllRooms())
   },[dispatch])
   
+  
   const handleClickDelete = (id) => {
     dispatch(deleteRoom(id))
-    
   }
-
   return (
     <>
      {  status === 'loading' ? <Spinner/>
@@ -74,7 +71,7 @@ const Rooms = () => {
           <ImgContainer>
             <TableData>
                 <Link to={`/room/${room.id}`} >
-                  <img src={img} alt="img"/> 
+                  <img src={room.img} alt="img"/> 
                 </Link>
             </TableData>
               <ParagraphContainer>
@@ -83,13 +80,13 @@ const Rooms = () => {
               </ParagraphContainer>
               </ImgContainer> 
             <TableData>
-              <Paragraph>{room.bed_Type}</Paragraph>
+              <Paragraph>{room.bed_type}</Paragraph>
             </TableData> 
             <TableData>
               <Paragraph>{room.room_floor}</Paragraph>
             </TableData> 
             <TableData>
-              <Paragraph>{room.Amenities}</Paragraph>
+              <Paragraph>{room.amenities}</Paragraph>
             </TableData> 
             <TableData>
               <Paragraph>{room.rate}
@@ -102,7 +99,7 @@ const Rooms = () => {
               </Button>
             </TableData> 
             <TableData>
-              <TiDelete color={'red'} size={25} onClick={()=>handleClickDelete(room.id)}/>
+              <TiDelete  style={{cursor:"pointer"}} color={'red'} size={25} onClick={()=>handleClickDelete(room.id)}/>
             </TableData>
           </TableRow> ))
       }
