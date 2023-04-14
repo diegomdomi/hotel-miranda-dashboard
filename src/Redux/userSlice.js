@@ -72,6 +72,7 @@ const initialState = {
         builder
           .addCase(addUser.fulfilled, (state,action)=>{
             state.list = [...state.list,action.payload]
+            state.status = "idle";
           }) 
         builder     
           .addCase(editUser.fulfilled, (state,action)=>{

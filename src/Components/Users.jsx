@@ -29,8 +29,10 @@ const Users = () => {
   const { list, status } = useSelector(state => state.usersSlice)
 
   useEffect(() => {
-   dispatch(fetchAllUsers()) 
-  }, [])
+    if(list.length === 0) {
+      dispatch(fetchAllUsers()) 
+    }
+  }, [dispatch,list.length])
   
 
   return (

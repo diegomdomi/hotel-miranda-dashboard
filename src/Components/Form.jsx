@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from "styled-components";
 import { useDispatch } from 'react-redux';
 import { addUser } from '../Redux/userSlice';
-import {  useNavigate,Link } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 
 
 export const Form = () => {
@@ -23,30 +23,29 @@ export const Form = () => {
         const name = event.target.name;
         const value = "";
         setInputs(prev => ({...prev, [name]: value}))
-        event.target.reset();
+        navigate('/users')
+        // event.target.reset();
     };
 
   return (
     <Styles>
-        <form onSubmit={submitNewUser}>
-            <label>Name</label>
-            <input name="first_name" value={inputs.first_name} onChange={handleInputChange}/>
-            <label>Job Desk</label>
-            <input name="job_desk" value={inputs.job_desk} onChange={handleInputChange}/>
-            <label>Schedule</label>
-            <input name="schedules" value={inputs.schedules} onChange={handleInputChange}/>
-            <label>Contact</label>
-            <input name="contact" value={inputs.contact} onChange={handleInputChange}/>
-            <label>Status</label>
-            <select name="status" onChange={handleInputChange}>
-              <option value={"INACTIVE"} selected></option>
-              <option value={"ACTIVE"}>ACTIVE</option>
-              <option value={"INACTIVE"} >INACTIVE</option>
-            </select>
-            <Link to="/users">
-              <input type="submit" className="submitButton" />
-            </Link>
-        </form>
+      <form onSubmit={submitNewUser}>
+        <label>Name</label>
+        <input name="first_name" value={inputs.first_name} onChange={handleInputChange}/>
+        <label>Job Desk</label>
+        <input name="job_desk" value={inputs.job_desk} onChange={handleInputChange}/>
+        <label>Schedule</label>
+        <input name="schedules" value={inputs.schedules} onChange={handleInputChange}/>
+        <label>Contact</label>
+        <input name="contact" value={inputs.contact} onChange={handleInputChange}/>
+        <label>Status</label>
+        <select name="status" onChange={handleInputChange}>
+          <option value={"INACTIVE"} selected></option>
+          <option value={"ACTIVE"}>ACTIVE</option>
+          <option value={"INACTIVE"}>INACTIVE</option>
+        </select>
+          <input type="submit" className="submitButton" />
+      </form>
     </Styles> 
   )
 }

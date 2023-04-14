@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
 import { fetchAllRooms } from '../Redux/roomSlice.js';
 import  { deleteRoom } from '../Redux/roomSlice.js';
-import { TiDelete } from 'react-icons/ti'
+import { TiDelete } from 'react-icons/ti';
 import {
   TableContainer,
   Table,
@@ -26,7 +26,9 @@ import { Spinner } from './Spinner';
 
 const Rooms = () => {
   const dispatch = useDispatch();
+
   const { list, status } = useSelector(state=>state.roomSlice)
+
   useEffect(() => {
     dispatch(fetchAllRooms())
   },[dispatch])
