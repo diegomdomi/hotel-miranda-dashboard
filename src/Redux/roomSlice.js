@@ -14,7 +14,7 @@ const initialState = {
     'room/requestGET',
       async (data) => {
         // return await delayFunction(rooms)
-        return await requestGET(`${url}/rooms`)
+        return await requestGET(`${url}/rooms`,"GET")
     })
 
     export const getSingleRoom = createAsyncThunk(
@@ -25,7 +25,7 @@ const initialState = {
     export const deleteRoom = createAsyncThunk(
       'room/deleteRoom',
       async (id) => {
-        return await requestDELETE(`${url}/rooms/${id}`)
+        return await requestGET(`${url}/rooms/${id}`,"DELETE")
         // return id
       })
     export const addRoom = createAsyncThunk(

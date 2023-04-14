@@ -15,7 +15,7 @@ const initialState = {
     'users/requestGET',
       async (data) => {
         // return await delayFunction(users)
-        return await requestGET(`${url}/users`)
+        return await requestGET(`${url}/users`,"GET")
     })
     export const getSingleUser = createAsyncThunk(
       'users/getSinlgeUser',
@@ -30,7 +30,7 @@ const initialState = {
       export const addUser = createAsyncThunk(
         'users/addUser',
         async (newUser) => {
-          return newUser
+          return await requestGET(`${url}/users`,"POST", newUser)
         })
           
       export const editUser = createAsyncThunk(

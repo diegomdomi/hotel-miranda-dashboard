@@ -15,12 +15,12 @@ const initialState = {
       async (
       ) => {
         // return await delayFunction(bookings)
-        return await requestGET(`${url}/bookings`)
+        return await requestGET(`${url}/bookings`,"GET")
     })
     export const getSingleBooking = createAsyncThunk(
       'bookings/getSinlgeBooking',
         async (id) => {
-          return await requestGET(`${url}/bookings/${id}`)
+          return await requestGET(`${url}/bookings/${id}`,"GET")
           // const fetchSingleBooking = bookings.find(booking => booking.id === id);
           // return await delayFunction(fetchSingleBooking)
         })
