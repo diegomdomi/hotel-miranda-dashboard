@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchAllBookings } from '../Redux/bookingsSlice.js';
+import { deleteBooking } from '../Redux/bookingsSlice.js';
 import { Spinner } from './Spinner';
+import { BsTrash} from 'react-icons/bs';
 import img from '../Assets/avatar1.jpg';
 import {
   TableContainer,
@@ -30,9 +32,11 @@ const Bookings = () => {
   const dispatch = useDispatch();
     useEffect(() => {
       dispatch(fetchAllBookings())
-    }, [])
+    }, [dispatch])
 
- 
+    const handleClickDelete = (id) => {
+      dispatch(deleteBooking(id))
+    }
   return (
     <>
       { status === 'loading' ? <Spinner/> 
@@ -113,6 +117,9 @@ const Bookings = () => {
                 {guest.Status}
                 <p>{guest.status === "2" ? 'Booked' : 'Refund'}</p>
               </Button>
+            </TableData>
+            <TableData>
+              <BsTrash style={{cursor:"pointer"}} color={'red'} size={25} onClick={()=>handleClickDelete(guest.id)}/>
             </TableData>
           </TableRow> ))
       }

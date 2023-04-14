@@ -27,7 +27,7 @@ const initialState = {
       export const deleteBooking = createAsyncThunk(
         'bookings/deleteBooking',
         async (id) => {
-          return id
+          return await requestGET(`${url}/bookings/${id}`,"DELETE")
         })
       export const addBooking = createAsyncThunk(
         'bookings/addBooking',
@@ -69,9 +69,18 @@ const initialState = {
           })
          
         builder
+        .addCase (deleteBooking.pending, (state) =>{
+          console.log('loading');
+          state.status = 'loading'
+        })
           .addCase(deleteBooking.fulfilled, (state,action)=>{
-            state.list = state.list.filter(booking => booking.id !== action.payload)
-            
+            state.status = 'succeeded'
+            state.list = state.list.filter(booking => Number(booking.id) !== Number(action.payload))
+            console.log(action.payload);
+          })
+          .addCase (deleteBooking.rejected, (state) =>{
+            console.log('loading');
+            state.status = 'failed'
           })
         builder
           .addCase(addBooking.fulfilled, (state,action)=>{

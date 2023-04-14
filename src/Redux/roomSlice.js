@@ -65,7 +65,7 @@ const initialState = {
           })
          
         builder
-          .addCase (deleteRoom.pending, (state,action) =>{
+          .addCase (deleteRoom.pending, (state) =>{
             console.log('loading');
             state.status = 'loading'
           })
@@ -75,7 +75,7 @@ const initialState = {
             state.list = state.list.filter(room => Number(room.id) !== Number(action.payload))
           })
        
-          .addCase (deleteRoom.rejected, (state,action) =>{
+          .addCase (deleteRoom.rejected, (state) =>{
             console.log('loading');
             state.status = 'failed'
           })

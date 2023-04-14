@@ -40,7 +40,7 @@ export const Form = () => {
         <input name="contact" value={inputs.contact} onChange={handleInputChange}/>
         <label>Status</label>
         <select name="status" onChange={handleInputChange}>
-          <option value={"INACTIVE"} selected></option>
+          <option value={""} selected></option>
           <option value={"ACTIVE"}>ACTIVE</option>
           <option value={"INACTIVE"}>INACTIVE</option>
         </select>

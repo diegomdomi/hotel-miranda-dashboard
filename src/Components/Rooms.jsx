@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
 import { fetchAllRooms } from '../Redux/roomSlice.js';
 import  { deleteRoom } from '../Redux/roomSlice.js';
-import { TiDelete } from 'react-icons/ti';
+import { BsTrash} from 'react-icons/bs';
 import {
   TableContainer,
   Table,
@@ -98,7 +98,7 @@ const Rooms = () => {
               </Button>
             </TableData> 
             <TableData>
-              <TiDelete  style={{cursor:"pointer"}} color={'red'} size={25} onClick={()=>handleClickDelete(room.id)}/>
+              <BsTrash style={{cursor:"pointer"}} color={'red'} size={25} onClick={()=>handleClickDelete(room.id)}/>
             </TableData>
           </TableRow> ))
       }

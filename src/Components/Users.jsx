@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import img from '../Assets/avatar1.jpg';
 import {HiPhone} from 'react-icons/hi'
 import { useDispatch,useSelector } from 'react-redux';
 import { fetchAllUsers } from '../Redux/userSlice.js';
+import { deleteUser } from '../Redux/userSlice.js';
 import { Spinner } from './Spinner';
+import { BsTrash} from 'react-icons/bs';
+
 import {
   TableContainer,
   Table,
@@ -29,12 +30,14 @@ const Users = () => {
   const { list, status } = useSelector(state => state.usersSlice)
 
   useEffect(() => {
-    if(list.length === 0) {
+    if(list && list.length === 0) {
       dispatch(fetchAllUsers()) 
     }
-  }, [dispatch,list.length])
+  }, [dispatch,status])
   
-
+  const handleClickDelete = (id) => {
+    dispatch(deleteUser(id))
+  }
   return (
     <>
      {status === 'loading' ? <Spinner/> :
@@ -102,7 +105,9 @@ const Users = () => {
               {users.status}
               </Paragraph>
             </TableData> 
-        
+            <TableData>
+              <BsTrash style={{cursor:"pointer"}} color={'red'} size={25} onClick={()=>handleClickDelete(users.id)}/>
+            </TableData>
           </TableRow> ))
       }
     </tbody>
