@@ -8,6 +8,7 @@ import { useAuth } from '../Context/AuthProvider';
 import {  useNavigate,useLocation } from 'react-router-dom'
 import { ACTIONS_USER } from '../Context/actions';
 
+
 const NavContainer = styled.div`
     transition: margin-left .5s;
     padding: 16px;
@@ -61,7 +62,6 @@ const NavBar = ({openNav,measure}) => {
     auth.authDispatch({type:ACTIONS_USER.LOGOUT})
     navigate('/login')
   }
-
 
 
   return (

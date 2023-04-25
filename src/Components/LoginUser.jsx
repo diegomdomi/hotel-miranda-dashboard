@@ -5,6 +5,8 @@ import Input from "./Input";
 import {  useNavigate } from 'react-router-dom'
 import { useAuth } from '../Context/AuthProvider';
 import { ACTIONS_USER } from '../Context/actions';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const url = process.env.REACT_APP_URL
 
@@ -27,7 +29,6 @@ const sendForm = async (email,password) => {
 }
 
 function LoginUser() {
-
   const navigate = useNavigate()
   const auth = useAuth()
   const [email, setEmail] = useState("usuario1@1.com")
@@ -39,6 +40,7 @@ function LoginUser() {
     const {token} = await sendForm(email,password)
   
     auth.authDispatch({type:ACTIONS_USER.LOGIN , payload:{email,password,name, token}})
+    toast("Login Succes !")
     navigate('/')
     }
 
@@ -62,6 +64,7 @@ function LoginUser() {
           <TitleContainer>H</TitleContainer>
           <MainTitle>Hotel Miranda</MainTitle>
         </MainTitleContainer>
+        <ToastContainer />
     </MainContainer>
     </form>
   );
