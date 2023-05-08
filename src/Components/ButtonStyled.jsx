@@ -7,7 +7,7 @@ export default function ButtonStyled({ content,handleClick }) {
 }
 
 const StyledButton = styled.button`
-  margin-top:105px;
+  margin-top:45px;
   background: linear-gradient(to right, #14163c 0%, #03217b 79%);
   text-transform: uppercase;
   letter-spacing: 2px;

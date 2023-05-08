@@ -24,7 +24,7 @@ import {
   NewRoomButton
 } from './UsersStyled'
 
-const Users = () => {
+const Users = ({measure}) => {
   const dispatch = useDispatch();
   const { list, status } = useSelector(state => state.usersSlice)
   useEffect(() => {
@@ -35,7 +35,7 @@ const Users = () => {
   return (
     <>
      {status === 'loading' ? <Spinner/> :
-      <TableContainer>
+      <TableContainer margin={measure ? "200px" : "50px"}>
         <HeaderContainer>
           <ListTitleTopContainer>
             <ListTitleTop>All Employee</ListTitleTop>
@@ -64,9 +64,9 @@ const Users = () => {
         (<TableRow >
           <ImgContainer>
             <TableData>
-                <Link to={`/guest/${users.id}`} >
+                {/* <Link to={`/guest/${users.id}`} > */}
                   <img src={img} alt="img"/> 
-                </Link>
+                {/* </Link> */}
             </TableData>
               <ParagraphContainer>
                 <Paragraph weight={'700'}>{users.Name}</Paragraph>

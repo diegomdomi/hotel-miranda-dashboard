@@ -4,14 +4,14 @@ import NavBar from "./NavBar";
 import SideBar from "./SideBar";
 import { useState } from "react";
 
-export default function MainNavContainer() {
+export default function MainNavContainer({openNav, measure}) {
  
-  const [sideBarDisplay, setSideBarDisplay] = useState(false)
+  // const [sideBarDisplay, setSideBarDisplay] = useState(false)
 
-  const openNav = (e)=> {
-    e.stopPropagation()
-    setSideBarDisplay(prevState => !prevState)
-  }
+  // const openNav = (e)=> {
+  //   e.stopPropagation()
+  //   setSideBarDisplay(prevState => !prevState)
+  // }
     const auth = useAuth()
     if (!auth.auth.isLogged) {
         return null;
@@ -19,8 +19,8 @@ export default function MainNavContainer() {
     return (
         <>
           <MainContainer>
-              <NavBar openNav={openNav} measure={sideBarDisplay}/>
-              <SideBar measure={sideBarDisplay}></SideBar>
+              <NavBar openNav={openNav} measure={measure}/>
+              <SideBar measure={measure}></SideBar>
           </MainContainer>
         </>
     )

@@ -17,9 +17,10 @@ import {
 import styled from "styled-components";
 
 const ContactCardsContainer = styled.div`
+  margin-left: ${props=>props.margin};
+  transition: margin-left .5s;
   margin-top: 40px;
-  width: 1475px;
-  margin-left:450px;
+  width: 80%;
   background: #FFFFFF 0% 0% no-repeat padding-box;
   box-shadow: 0px 4px 4px #00000005;
   border-radius: 20px;
@@ -39,11 +40,11 @@ const Title = styled.h2`
   color: #393939;
 `
 
-const Dashboard = () => {
+const Dashboard = ({measure}) => {
 
   return (
     <>
-    <MainDIvContainer>
+    <MainDIvContainer margin={measure ? "350px" : "50px"}>
       <ChildDivContainer>
         <ChildDivColor bgcolor={'#FFEDEC'}>
         <IconContainer>
@@ -97,7 +98,7 @@ const Dashboard = () => {
         </DashboardParagraph>
       </ChildDivContainer>
     </MainDIvContainer>
-    <ContactCardsContainer>
+    <ContactCardsContainer  margin={measure ? "350px" : "50px"}> 
       <Title>Latest Review by Customers</Title>
       <CardsContainer>
         <CardContact/>

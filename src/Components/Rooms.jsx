@@ -27,7 +27,7 @@ import {
 } from './RoomsStyled'
 import { Spinner } from './Spinner';
 
-const Rooms = () => {
+const Rooms = ({measure}) => {
   const dispatch = useDispatch();
   const { list, status } = useSelector(state=>state.roomSlice)
   
@@ -43,7 +43,7 @@ const Rooms = () => {
   return (
     <>
      {  status === 'loading' ? <Spinner/>
-     : <TableContainer>
+     : <TableContainer margin={measure ? "300px" : "50px"}>
         <HeaderContainer>
           <ListTitleTopContainer>
             <ListTitleTop >All Rooms</ListTitleTop>
@@ -73,9 +73,9 @@ const Rooms = () => {
         (<TableRow key={room.id}>
           <ImgContainer>
             <TableData>
-                <Link to={`/room/${room.id}`} >
+                {/* <Link to={`/room/${room.id}`} > */}
                   <img src={img} alt="img"/> 
-                </Link>
+                {/* </Link> */}
             </TableData>
               <ParagraphContainer>
                 <Span>#000123456</Span>

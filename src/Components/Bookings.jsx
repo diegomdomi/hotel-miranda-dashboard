@@ -24,7 +24,7 @@ import {
   NewRoomButtonContainer,
   NewRoomButton
 } from './BookingsStyled'
-const Bookings = () => {
+const Bookings = ({measure}) => {
 
   const { list,status } = useSelector(state=>state.bookingsSlice)
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const Bookings = () => {
     <>
       { status === 'loading' ? <Spinner/> 
       :
-      <TableContainer>
+      <TableContainer  margin={measure ? "300px" : "50px"}>
         <HeaderContainer>
           <ListTitleTopContainer>
             <ListTitleTop>All Guest</ListTitleTop>

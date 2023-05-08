@@ -31,10 +31,10 @@ const ContactCardsContainer = styled.div`
   padding-bottom: 70px;
 `
 
-const Contact = () => {
+const Contact = ({measure}) => {
   return (
     <>
-      <TableContainer>
+      <TableContainer margin={measure ? "300px" : "50px"}>
       <ContactCardsContainer>
         <CardContact/>
         <CardContact/>

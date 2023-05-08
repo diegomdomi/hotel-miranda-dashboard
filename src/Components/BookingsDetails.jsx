@@ -12,7 +12,7 @@ import { getSingleBooking } from '../Redux/bookingsSlice.js';
 import { useParams } from 'react-router-dom';
 
 
-const BookingsDetails = () => {
+const BookingsDetails = ({measure}) => {
   const { id } = useParams();
   const dispatch = useDispatch()
   const bookingSingleStore = useSelector(state=>state.bookingsSlice.singleBooking)
@@ -27,7 +27,7 @@ const BookingsDetails = () => {
    { 
     !bookingSingleStore ? <Spinner></Spinner>
     :
-    <BookingsDetailsContainer>
+    <BookingsDetailsContainer margin={measure ? "450px" : "50px"}>
         <DataContainer>
         <MainDataContainer>
         <MainDivTitle>
@@ -125,7 +125,8 @@ const BookingsDetailsContainer = styled.div`
     border-collapse: collapse;
     box-shadow: 0px 3px 10px #00000005;
     margin-top:127px;
-    margin-left: 450px;
+     margin-left: ${props=>props.margin};
+    transition: margin-left .5s;
     margin-right:100px;
     background-color: #fff;
     border-radius: 15px;

@@ -5,7 +5,7 @@ import { FcOk } from 'react-icons/fc';
 import { GiCancel } from 'react-icons/gi';
 
 const MainCard = styled.div`
-  width: 431px;
+  width: 80%;
   border: 1px solid #EBEBEB;
   border-radius: 20px;
   margin-right: 40px;
@@ -72,11 +72,11 @@ const CardContact = () => {
                 Cristina Aguilera
               </DataUserContent>
               <Span>4m ago</Span>
-            </DataUserContainer>
             <IconsContainer>
-              <FcOk size={24}></FcOk>
-              <GiCancel size={24} color={'red'}></GiCancel>
+              <FcOk size={20}></FcOk>
+              <GiCancel size={20} color={'red'}></GiCancel>
             </IconsContainer>
+            </DataUserContainer>
         </ContactContainer>
     </MainCard>
     </div>

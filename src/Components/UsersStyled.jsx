@@ -12,7 +12,8 @@ const TableContainer = styled.div`
   margin-top:127px;
   margin-left: 150px;
   padding-bottom: 150px;
-    margin-left: 350px;
+  margin-left: ${props=>props.margin};
+  transition: margin-left .5s;
 `
 const Table = styled.table`
 border-collapse: collapse;

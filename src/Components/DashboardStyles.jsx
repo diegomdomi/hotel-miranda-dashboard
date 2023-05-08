@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 const MainDIvContainer = styled.div`
  display:flex;
- margin-left:450px;
+ margin-left: ${props=>props.margin};
+ transition: margin-left .5s;
 `
 const ChildDivContainer = styled.div`
 display:flex;
-  width: 340px;
+  width: 80%;
   height: 125px;
   margin-right:40px;
   margin-top: 50px;

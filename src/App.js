@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter ,Routes, Route} from 'react-router-dom';
+import { useState } from 'react';
 import Bookings from './Components/Bookings';
 import Rooms from './Components/Rooms';
 import Room from './Components/Room';
@@ -17,26 +18,29 @@ import styled from 'styled-components';
 import BookingsDetails from './Components/BookingsDetails';
 
 function App() {
+  const [sideBarDisplay, setSideBarDisplay] = useState(false)
+
+  const openNav = (e)=> {
+    e.stopPropagation()
+    setSideBarDisplay(prevState => !prevState)
+  }
 
   return (
     <>
     <AuthProvider>
       <BrowserRouter basename='/hotel-miranda-dashboard'>
         <div className="App" >
-        {/* <MainDisplayContainer >
-        </MainDisplayContainer> */}
-            <MainNavContainer  >
-            </MainNavContainer>
+            <MainNavContainer openNav={openNav}  measure={sideBarDisplay}/>
           <Routes>
             <Route element={<PrivateRoutes /> } >
-              <Route exact path="/" element={<Dashboard/>}/>
-              <Route path="/user" element={<Users/>} />
-              <Route path="/bookings" element={<Bookings/>} />
-              <Route path="/bookings/:id" element={<BookingsDetails/>} />
-              <Route path="/rooms" element={<Rooms/>} />
-              <Route path="/room/:id" element={<Room/>} />
-              <Route path="/users" element={<Users/>} />
-              <Route path="/contact" element={<Contact/>} />
+              <Route exact path="/" element={<Dashboard measure={sideBarDisplay}/>}/>
+              {/* <Route path="/user" element={<Users measure={sideBarDisplay}/>} /> */}
+              <Route path="/bookings" element={<Bookings measure={sideBarDisplay}/>} />
+              <Route path="/bookings/:id" element={<BookingsDetails measure={sideBarDisplay}/>} />
+              <Route path="/rooms" element={<Rooms measure={sideBarDisplay}/>} />
+              {/* <Route path="/room/:id" element={<Room/>} /> */}
+              <Route path="/users" element={<Users measure={sideBarDisplay}/>} />
+              <Route path="/contact" element={<Contact measure={sideBarDisplay}/>} />
             </Route>
             <Route  path ="/login" element={<LoginUser/>}/>
           </Routes> 
