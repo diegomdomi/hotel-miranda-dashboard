@@ -10,10 +10,10 @@ export const Spinner = styled.div`
   position: absolute; /* cambiamos de fixed a absolute */
   /* Ponemos el valor de left, bottom, right y top en 0 */
   left: 0;
-  bottom: 0; 
-  right: 0; 
-  top: 0; 
-  margin: auto; 
+  bottom: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
 
   @keyframes spin {
     0% {
@@ -25,4 +25,3 @@ export const Spinner = styled.div`
     }
   }
 `;
-

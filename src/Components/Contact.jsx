@@ -1,13 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
-import NavBar from './NavBar';
-import CardContact from './CardContact';
-import { contactList } from '../TemplatesTable/contactList';
+import React from "react";
+import styled from "styled-components";
+import NavBar from "./NavBar";
+import CardContact from "./CardContact";
+import { contactList } from "../TemplatesTable/contactList";
 import {
   TableContainer,
   Table,
   TableHead,
-  TableRow, 
+  TableRow,
   TableData,
   RowHeader,
   Paragraph,
@@ -18,40 +18,38 @@ import {
   ListTitleTopContainer,
   ListTitleTop,
   NewRoomButtonContainer,
-  NewRoomButton
-} from './BookingsStyled'
-
+  NewRoomButton,
+} from "./BookingsStyled";
 
 const ContactCardsContainer = styled.div`
-  display:flex;
-  flex:wrap;
-  margin-top: 40px;
+  display: flex;
+  flex: wrap;
+  margin-top: 10px;
   padding-top: 30px;
   padding-left: 30px;
   padding-bottom: 70px;
-`
+`;
 
-const Contact = ({measure}) => {
+const Contact = ({ measure }) => {
   return (
     <>
-      <TableContainer margin={measure ? "300px" : "50px"}>
-      <ContactCardsContainer>
-        <CardContact/>
-        <CardContact/>
-        <CardContact/>
-      </ContactCardsContainer>
+      <TableContainer margin={measure ? "350px" : "50px"}>
+        <ContactCardsContainer>
+          <CardContact />
+          <CardContact />
+          <CardContact />
+        </ContactCardsContainer>
         <HeaderContainer>
           <ListTitleTopContainer>
             <ListTitleTop>All Costumer Reviews</ListTitleTop>
             <ListTitleTop>Publised</ListTitleTop>
             <ListTitleTop>Archive</ListTitleTop>
-          
           </ListTitleTopContainer>
-          <NewRoomButtonContainer>
-            <NewRoomButton color={'#135846'}>Newest</NewRoomButton>
+          <NewRoomButtonContainer right={"40px"}>
+            <NewRoomButton color={"#135846"}>Newest</NewRoomButton>
           </NewRoomButtonContainer>
         </HeaderContainer>
-        <Table >
+        <Table>
           <thead>
             <RowHeader>
               <TableHead>Order ID</TableHead>
@@ -62,40 +60,37 @@ const Contact = ({measure}) => {
             </RowHeader>
           </thead>
           <tbody>
-      { contactList.map((guest) =>
-        (<TableRow key={guest.id}>
-          <ImgContainer>
-            <TableData >
-            </TableData>
-                <Paragraph>{guest.id}</Paragraph>
-              </ImgContainer>
-            <TableData>
-              <Paragraph>{guest.date}</Paragraph>
-            </TableData>
-            <TableData>
-              <Paragraph>
-                {guest.customer}
-              </Paragraph>
-            </TableData>
-            <TableData>
-              <Paragraph>
-                {guest.comment}
-              </Paragraph>
-            </TableData>
-            <TableData>
-              <Button
-                color={'red'}
-                bgcolor={'#E8FFEE'}>
-                {guest.action}
-              </Button>
-            </TableData>
-          </TableRow> ))
-      }
-    </tbody>
-   </Table>
-  </TableContainer>
+            {contactList.map((guest) => (
+              <TableRow key={guest.id}>
+                <ImgContainer>
+                  <TableData
+                    width={"0px"}
+                    height={"180px"}
+                    padding={"25px"}
+                  ></TableData>
+                  <Paragraph>{guest.id}</Paragraph>
+                </ImgContainer>
+                <TableData>
+                  <Paragraph>{guest.date}</Paragraph>
+                </TableData>
+                <TableData>
+                  <Paragraph>{guest.customer}</Paragraph>
+                </TableData>
+                <TableData>
+                  <Paragraph>{guest.comment}</Paragraph>
+                </TableData>
+                <TableData>
+                  <Button color={"red"} bgcolor={"#E8FFEE"}>
+                    {guest.action}
+                  </Button>
+                </TableData>
+              </TableRow>
+            ))}
+          </tbody>
+        </Table>
+      </TableContainer>
     </>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

@@ -1,88 +1,89 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import  {guestList}  from '../TemplatesTable/guestList.js';
-import { delayFunction } from './helpers/delayFunction.js';
-const bookings = guestList
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { guestList } from "../TemplatesTable/guestList.js";
+import { delayFunction } from "./helpers/delayFunction.js";
+const bookings = guestList;
 
 const initialState = {
-  list:[],
-  singleBooking:{},
+  list: [],
+  singleBooking: {},
   loading: false,
-  error: false
+  error: false,
+};
 
+export const fetchAllBookings = createAsyncThunk(
+  "bookings/delayFunction",
+  async (data) => {
+    return await delayFunction(bookings);
   }
+);
+export const getSingleBooking = createAsyncThunk(
+  "bookings/getSinlgeBooking",
+  async (id) => {
+    const fetchSingleBooking = bookings.find((booking) => booking.id === id);
+    return await delayFunction(fetchSingleBooking);
+  }
+);
+export const deleteBooking = createAsyncThunk(
+  "bookings/deleteBooking",
+  async (id) => {
+    return id;
+  }
+);
+export const addBooking = createAsyncThunk(
+  "bookings/addBooking",
+  async (newRoom) => {
+    return newRoom;
+  }
+);
 
+export const editBooking = createAsyncThunk(
+  "bookings/ediBooking",
+  async (room) => {
+    return room;
+  }
+);
 
-  export const fetchAllBookings = createAsyncThunk(
-    'bookings/delayFunction',
-      async (data) => {
-        return await delayFunction(bookings)
-    })
-    export const getSingleBooking = createAsyncThunk(
-      'bookings/getSinlgeBooking',
-        async (id) => {
-          const fetchSingleBooking = bookings.find(booking => booking.id === id);
-          return await delayFunction(fetchSingleBooking)
+export const bookingsSlice = createSlice({
+  name: "bookings",
+  initialState,
+  extraReducers(builder) {
+    builder
+      .addCase(fetchAllBookings.pending, (state, action) => {
+        console.log("loading");
+        state.status = "loading";
       })
-      export const deleteBooking = createAsyncThunk(
-        'bookings/deleteBooking',
-        async (id) => {
-          return id
-        })
-      export const addBooking = createAsyncThunk(
-        'bookings/addBooking',
-        async (newRoom) => {
-          return newRoom
-        })
-          
-      export const editBooking = createAsyncThunk(
-      'bookings/ediBooking',
-        async (room) => {
-          return room
+      .addCase(fetchAllBookings.fulfilled, (state, action) => {
+        console.log("load complete");
+        state.status = "succeeded";
+        state.list = action.payload;
       })
+      .addCase(fetchAllBookings.rejected, (state, action) => {
+        console.log("Failure while fetching data!");
+        state.status = "failed";
+        state.error = action.error.message;
+      });
+    builder.addCase(getSingleBooking.fulfilled, (state, action) => {
+      state.status = "succeeded";
+      state.singleBooking = action.payload;
+      // state.singleBooking= state.list.find(booking => booking.id == action.payload)
+    });
 
-  export const bookingsSlice = createSlice({
-    name:'bookings',
-    initialState,
-    extraReducers(builder) {
-      builder
-        .addCase (fetchAllBookings.pending, (state,action) =>{
-          console.log('loading');
-          state.status = 'loading'
-        })
-        .addCase(fetchAllBookings.fulfilled, (state, action) =>{
-          console.log('load complete');
-          state.status = 'succeeded'
-          state.list = action.payload
-        })
-        .addCase(fetchAllBookings.rejected, (state,action) =>{
-          console.log('Failure while fetching data!');
-          state.status = 'failed'
-          state.error = action.error.message
-        })
-        builder
-          .addCase(getSingleBooking.fulfilled, (state, action) =>{
-            state.status = 'succeeded';
-            state.singleBooking = action.payload
-            // state.singleBooking= state.list.find(booking => booking.id == action.payload)
-          })
-         
-        builder
-          .addCase(deleteBooking.fulfilled, (state,action)=>{
-            state.list = state.list.filter(booking => booking.id !== action.payload)
-            
-          })
-        builder
-          .addCase(addBooking.fulfilled, (state,action)=>{
-            state.list = [...state.list,action.payload]
-          }) 
-        builder     
-          .addCase(editBooking.fulfilled, (state,action)=>{
-            state.list = state.list.map(booking => booking.id === action.payload.id ? action.payload : booking)
-          })
-    }
-    
-  })
+    builder.addCase(deleteBooking.fulfilled, (state, action) => {
+      state.list = state.list.filter(
+        (booking) => booking.id !== action.payload
+      );
+    });
+    builder.addCase(addBooking.fulfilled, (state, action) => {
+      state.list = [...state.list, action.payload];
+    });
+    builder.addCase(editBooking.fulfilled, (state, action) => {
+      state.list = state.list.map((booking) =>
+        booking.id === action.payload.id ? action.payload : booking
+      );
+    });
+  },
+});
 
-export const selectBookings= (state) => state.bookings.list;
+export const selectBookings = (state) => state.bookings.list;
 
-export default bookingsSlice.reducer
+export default bookingsSlice.reducer;

@@ -6,8 +6,8 @@
   /* margin-left: 300px; */
 }
 
-.active div:first-child, .active div li {
-  color:red;
+.active div:first-child,
+.active div li {
+  color: red;
   text-decoration: none;
-  
 }

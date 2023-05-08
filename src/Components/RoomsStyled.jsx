@@ -1,118 +1,115 @@
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 const TableContainer = styled.div`
-  width:90%;
-  margin: 0 auto;
+  ${"" /* width:90%; */}
+  ${"" /* margin: 0 auto; */}
   border-collapse: collapse;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-content: space-around;
   align-items: center;
-  margin-top:127px;
-  margin-left: ${props=>props.margin};
-  transition: margin-left .5s;
-`
+  margin-top: 127px;
+  margin-left: ${(props) => props.margin};
+  transition: margin-left 0.5s;
+`;
 const Table = styled.table`
-border-collapse: collapse;
-background: #FFFFFF 0% 0% no-repeat padding-box;
-border-radius: 20px;
-
-`
+  border-collapse: collapse;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-radius: 20px;
+`;
 
 const TableHead = styled.td`
-  padding:15px;
+  padding: 15px;
   color: var(--unnamed-color-393939);
   font: normal normal 600 18px/27px Poppins;
-`
+`;
 const TableRow = styled.tr`
-    opacity: 1;
-    border-top: 1px solid rgb(212, 212, 212);
-    :hover {
-      box-shadow: 0px 4px 30px #00000014;
-
-
-    }
-`
+  opacity: 1;
+  border-top: 1px solid rgb(212, 212, 212);
+  :hover {
+    box-shadow: 0px 4px 30px #00000014;
+  }
+`;
 
 const TableData = styled.td`
-  padding:25px;
-  img{
-  width:150px;
-  height:70px
- }
-`
+  padding: 17px;
+  img {
+    width: 150px;
+    height: 70px;
+    border-radius: 10px;
+  }
+`;
 const RowHeader = styled.tr`
   border-bottom: 1px solid #ccc;
-`
+`;
 const Paragraph = styled.p`
   max-width: 300px;
   font-weight: 500;
   color: rgb(57, 57, 57);
-  font-family: var(--font-poppins)
-`
+  font-family: var(--font-poppins);
+`;
 
 const Span = styled.span`
   color: #799283;
-`
+`;
 const ImgContainer = styled.div`
-display:flex;
-align-items: center;
-`
+  display: flex;
+  align-items: center;
+`;
 const ParagraphContainer = styled.div`
-  text-align:initial;
-  margin-right:80px;
-`
+  text-align: initial;
+  margin-right: 80px;
+`;
 const Button = styled.button`
-  background: #5AD07A 0% 0% no-repeat padding-box;
+  background: #5ad07a 0% 0% no-repeat padding-box;
   border-radius: 12px;
-  border:none;
+  border: none;
   background-color: rgb(90, 208, 122);
   color: white;
   padding: 13px 25px;
   border-radius: 12px;
   text-align: center;
   margin-left: 30px;
-`
+`;
 /** Button Header **/
 const HeaderContainer = styled.div`
-  width:60%;
-  display:flex;
-  justify-content: space-between;
-`
+  width: 100%;
+  display: flex;
+  ${"" /* justify-content: space-between; */}
+`;
 const ListTitleTopContainer = styled.div`
   display: flex;
-  width:60%;
+  width: 60%;
   margin-bottom: 50px;
-`
+`;
 const ListTitleTop = styled.p`
   color: rgb(110, 110, 110);
   font-weight: 500;
   padding: 12px 30px;
   border-bottom: 1px solid rgb(212, 212, 212);
-  :hover{
+  :hover {
     color: #135846;
     font-weight: 700;
     cursor: pointer;
     border-bottom: 2px solid #135846;
   }
-`
+`;
 
 const NewRoomButtonContainer = styled.div`
   display: flex;
-`
+`;
 const NewRoomButton = styled.button`
   border-radius: 12px;
-  margin-left:20px;
-  background-color: ${props => props.bgColor};
+  margin-left: 20px;
+  background-color: ${(props) => props.bgColor};
   width: ;
-  height:49px;
-  color:${props => props.color};
-  font-family:Poppins;
+  height: 49px;
+  color: ${(props) => props.color};
+  font-family: Poppins;
   padding: 13px 23px;
-  border:none;
-`
+  border: none;
+`;
 export {
   TableContainer,
   Table,
@@ -129,7 +126,5 @@ export {
   ListTitleTopContainer,
   ListTitleTop,
   NewRoomButtonContainer,
-  NewRoomButton
-
-
-} 
+  NewRoomButton,
+};

@@ -1,18 +1,16 @@
 import styled from "styled-components";
 
-export default function ButtonStyled({ content,handleClick }) {
-
-
+export default function ButtonStyled({ content, handleClick }) {
   return <StyledButton onClick={handleClick}>{content}</StyledButton>;
 }
 
 const StyledButton = styled.button`
-  margin-top:45px;
+  margin-top: 45px;
   background: linear-gradient(to right, #14163c 0%, #03217b 79%);
   text-transform: uppercase;
   letter-spacing: 2px;
   width: 65%;
-  padding:20px 0 20px 0;
+  padding: 20px 0 20px 0;
   border: none;
   color: white;
   border-radius: 50px;
